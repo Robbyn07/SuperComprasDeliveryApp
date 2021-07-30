@@ -10,6 +10,22 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'negocio',
+    loadChildren: () => import('./pages/negocio/negocio.module').then( m => m.NegocioPageModule)
+  },
+  {
+    path: 'pedido',
+    loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule)
+  },
+  {
+    path: 'ayuda',
+    loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
+  },
+  {
+    path: 'detalle-pedido',
+    loadChildren: () => import('./pages/detalle-pedido/detalle-pedido.module').then( m => m.DetallePedidoPageModule)
   }
 ];
 
