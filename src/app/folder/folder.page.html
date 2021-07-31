@@ -14,8 +14,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <ion-menu-toggle auto-hide="false" *ngFor="let n of negocios | async; let i = index">
+    <ion-card (click)="abrir(n)">
+      <img [src]="n.imagen" [alt]="n.nombre"/>
+      <ion-card-header>
+        <ion-card-title>{{n.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-subtitle>Ubicacion</ion-card-subtitle>
+      <ion-card-content>
+        {{n.ubicacion}}
+      </ion-card-content>
+    </ion-card>
+  </ion-menu-toggle>
+
+  
 </ion-content>
