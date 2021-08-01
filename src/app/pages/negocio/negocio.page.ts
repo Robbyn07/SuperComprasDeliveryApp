@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { NegociosService } from '../../services/negocios.service';
+import { Pedido } from '../../domain/pedido';
+import { PedidoService } from 'src/app/services/pedido.service';
+import { PedidoDetalle } from '../../domain/pedidoDetalle';
 
 @Component({
   selector: 'app-negocio',
@@ -10,9 +13,11 @@ import { NegociosService } from '../../services/negocios.service';
 export class NegocioPage implements OnInit {
 
   negocio:any;
+  pedido:Pedido = new Pedido();
+  pedidoDetalle:Array<PedidoDetalle> = new Array<PedidoDetalle>(); 
   zoom=16;
 
-  constructor(private route: ActivatedRoute, private router:Router, private negociosService:NegociosService) { 
+  constructor(private route: ActivatedRoute, private router:Router, private negociosService:NegociosService, private pedidoService:PedidoService) { 
 
     route.queryParams.subscribe(params =>{
       this.negocio = params.negocio
@@ -20,17 +25,19 @@ export class NegocioPage implements OnInit {
         this.negocio = this.router.getCurrentNavigation().extras.queryParams.negocio;
       };
     })
-
-
   }
 
   ngOnInit() {
   }
 
   pedir(){
+    this.pedido.id = this.pedidoService.generarId();
+    this.pedido.negocio = this.negocio.id;
+    this.pedido.idCliente = "nada we"
     let params: NavigationExtras = {
       queryParams:{
-        negocio:this.negocio,
+        pedido:this.pedido,
+        pedidoDetalle:this.pedidoDetalle,
       }
     }
     this.router.navigate(["/pedido"],params)

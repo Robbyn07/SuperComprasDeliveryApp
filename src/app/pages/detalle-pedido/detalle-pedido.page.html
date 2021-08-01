@@ -6,4 +6,32 @@
 
 <ion-content>
 
+  <h2>Fecha:</h2>
+  <h3>{{pedido.fecha}}</h3>
+  <h2>Precio:</h2>
+  <h3>{{pedido.precioTotal}}</h3>
+  <h2>Negocio:</h2>
+  <h3>{{negocio.nombre}}</h3>
+  <ion-menu-toggle auto-hide="false" *ngFor="let n of negocio | async; let i = index">
+    <h3>{{n.nombre}}</h3>
+  </ion-menu-toggle>
+
+
+  <div *ngFor="let p of pedidoDetalle">
+    <ion-item>
+      <ion-label>
+        <h2>Producto: {{p.producto}}</h2>
+        <h2>Precio: {{p.precio}}</h2>
+        <h2>Cantidad: {{p.cantidad}}</h2>
+      </ion-label>
+      <p slot="end" color="primary">{{p.precioTotal}}</p>
+    </ion-item>
+  </div>
+
+
+
+
+
+  <ion-button expand="block" (click)="pedir()">Finalizar Pedido</ion-button>
+
 </ion-content>

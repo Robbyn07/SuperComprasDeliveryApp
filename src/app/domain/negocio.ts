@@ -5,7 +5,4 @@ export class Negocio{
     latitud:number;
     imagen:string;
     ubicacion:string;
-
-
-
 }

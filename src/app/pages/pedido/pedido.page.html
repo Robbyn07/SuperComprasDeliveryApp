@@ -6,4 +6,16 @@
 
 <ion-content>
 
+  <ion-menu-toggle auto-hide="false" *ngFor="let c of categorias | async; let i = index">
+    <ion-item (click)="verCategoria(c)">
+      <ion-icon slot="start" [ios]="c.icono + '-outline'" [md]="c.icono"></ion-icon>
+      <ion-label>{{c.nombre}}</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+
+  
+  <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
+
+  
+
 </ion-content>
