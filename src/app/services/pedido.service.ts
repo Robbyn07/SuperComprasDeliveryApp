@@ -26,4 +26,15 @@ export class PedidoService {
     refContactos.doc(pedido.id).set(Object.assign({},pedido));
 
   }
+
+  getPedido(id:string): Observable<any[]>{
+    return this.afs.collection("pedido",
+        ref => ref.where("id", "==", id)).valueChanges();
+  }
+
+  getPedidosEnviados(): Observable<any[]>{
+    return this.afs.collection("pedido",
+        ref => ref.where("estado", "==", "enviado")).valueChanges();
+  }
+
 }

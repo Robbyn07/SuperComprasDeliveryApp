@@ -26,4 +26,9 @@ export class PedidoDetalleService {
     refContactos.doc(pedidoDetalle.id).set(Object.assign({},pedidoDetalle));
 
   }
+
+  getDetalle(id:string): Observable<any[]>{
+    return this.afs.collection("pedido-detalle",
+        ref => ref.where("idPedido", "==", id)).valueChanges();
+  }
 }

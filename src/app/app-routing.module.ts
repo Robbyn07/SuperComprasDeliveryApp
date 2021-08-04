@@ -29,6 +29,18 @@ const routes: Routes = [
   },  {
     path: 'producto',
     loadChildren: () => import('./pages/producto/producto.module').then( m => m.ProductoPageModule)
+  },
+  {
+    path: 'pedido-seguimiento',
+    loadChildren: () => import('./pages/pedido-seguimiento/pedido-seguimiento.module').then( m => m.PedidoSeguimientoPageModule)
+  },
+  {
+    path: 'empleado-inicio',
+    loadChildren: () => import('./pages/empleado-inicio/empleado-inicio.module').then( m => m.EmpleadoInicioPageModule)
+  },
+  {
+    path: 'empleado-pedido',
+    loadChildren: () => import('./pages/empleado-pedido/empleado-pedido.module').then( m => m.EmpleadoPedidoPageModule)
   }
 
 ];

@@ -52,6 +52,7 @@ export class ProductoPage implements OnInit {
       this.detalle.precio = p.precio;
       this.detalle.producto = p.nombre;
       this.detalle.precioTotal = p.cantidad*p.precio;
+      this.detalle.idPedido = this.pedido.id;
 
       this.pedidoDetalle.forEach((element,index)=>{
         if(element.producto==this.detalle.producto) this.pedidoDetalle.splice(index,1);
@@ -63,7 +64,7 @@ export class ProductoPage implements OnInit {
         if(element.producto==p.nombre) this.pedidoDetalle.splice(index,1);
       });
     }
-    console.log(this.pedidoDetalle.length)
+    //console.log(this.pedidoDetalle.length)
     
   }
 
@@ -77,13 +78,14 @@ export class ProductoPage implements OnInit {
     this.detalle.precio = p.precio;
     this.detalle.producto = p.nombre;
     this.detalle.precioTotal = p.cantidad*p.precio;
+    this.detalle.idPedido = this.pedido.id;
 
     this.pedidoDetalle.forEach((element,index)=>{
       if(element.producto==this.detalle.producto) this.pedidoDetalle.splice(index,1);
     });
 
     this.pedidoDetalle.push(this.detalle);
-    console.log(this.pedidoDetalle.length)
+    //console.log(this.pedidoDetalle.length)
 
   }
 

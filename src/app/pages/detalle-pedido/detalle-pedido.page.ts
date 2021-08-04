@@ -34,7 +34,7 @@ export class DetallePedidoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.negocio = this.negociosService.getNegocio(this.pedido.negocio);
+    this.negocio = this.negociosService.getNegocio(this.pedido.idNegocio);
     this.pedido.estado = "enviado";
     this.pedido.fecha = new Date();
     this.pedido.precioTotal = 0;
@@ -50,6 +50,15 @@ export class DetallePedidoPage implements OnInit {
       this.pedidoDetalleService.save(element);
     });
     console.log("se realizo el pedido (se guardo en la base de datos)")
+    //console.log(this.pedido.id);
+    //console.log(this.pedido.negocio);
+    let params: NavigationExtras = {
+      queryParams:{
+        id:this.pedido.id,
+        idNegocio:this.pedido.idNegocio,
+      }
+    }
+    this.router.navigate(["/pedido-seguimiento"],params)
   }
 
 }

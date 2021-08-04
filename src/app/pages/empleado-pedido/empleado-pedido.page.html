@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>empleado-pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-menu-toggle auto-hide="false" *ngFor="let n of negocio | async; let i = index">
+
+    <ion-card>
+      <h1>Cliente: {{pedido.nombreCliente}}</h1>
+      <h2>Negocio</h2>
+      <p>{{n.nombre}}</p>
+      <p>{{negocio.ubicacion}}</p>
+      <img [src]="n.imagen" [alt]="n.nombre"/>
+      
+      <h2>Precio: {{pedido.precioTotal}}</h2>
+
+      <h2>Productos</h2>
+
+    <ion-menu-toggle auto-hide="false" *ngFor="let p of pedidoDetalle | async; let i = index">
+      <ion-item>
+        <ion-label>
+          <h2>Producto: {{p.producto}}</h2>
+          <h2>Precio: {{p.precio}}</h2>
+          <h2>Cantidad: {{p.cantidad}}</h2>
+        </ion-label>
+        <p slot="end" color="primary">{{p.precioTotal}}</p>
+      </ion-item>
+    </ion-menu-toggle>
+    
+    </ion-card>
+  </ion-menu-toggle>
+
+  
+  
+  <ion-button expand="block" (click)="confirmar()">Pedir aqui</ion-button>
+
+</ion-content>

@@ -3,7 +3,9 @@ export class Pedido{
     id: string;
     precioTotal:number;
     fecha:Date;
-    negocio:string;
+    idNegocio:string;
+    nombreNegocio:string;
     estado:string;
     idCliente:string;
+    nombreCliente:string;
 }

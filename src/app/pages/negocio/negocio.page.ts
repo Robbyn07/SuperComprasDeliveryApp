@@ -32,8 +32,10 @@ export class NegocioPage implements OnInit {
 
   pedir(){
     this.pedido.id = this.pedidoService.generarId();
-    this.pedido.negocio = this.negocio.id;
-    this.pedido.idCliente = "nada we"
+    this.pedido.idNegocio = this.negocio.id;
+    this.pedido.nombreNegocio = this.negocio.nombre;
+    this.pedido.idCliente = "nada we";
+    this.pedido.nombreCliente = "el nombre, cuando exista";
     let params: NavigationExtras = {
       queryParams:{
         pedido:this.pedido,
