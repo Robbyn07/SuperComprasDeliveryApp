@@ -1,26 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Negocio</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Negocio</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  
+    <ion-card>
+        <h1>{{negocio.nombre}}</h1>
+        <img [src]="negocio.imagen" [alt]="negocio.nombre" />
+        <agm-map [latitude]="negocio.latitud" [longitude]="negocio.longitud" [zoom]="zoom">
+            <agm-marker [latitude]="negocio.latitud" [longitude]="negocio.longitud" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Chartreuse.png"></agm-marker>
+        </agm-map>
+        <h3>Ubicacion</h3>
+        <p>{{negocio.ubicacion}}</p>
+    </ion-card>
 
-  <ion-card>
-    <h1>{{negocio.nombre}}</h1>
-    <img [src]="negocio.imagen" [alt]="negocio.nombre"/>
-    <agm-map [latitude]="negocio.latitud" [longitude]="negocio.longitud" [zoom]="zoom" >
-      <agm-marker [latitude]="negocio.latitud" [longitude]="negocio.longitud" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Chartreuse.png"></agm-marker>
-    </agm-map>
-    <h3>Ubicacion</h3>
-    <p>{{negocio.ubicacion}}</p>
-  </ion-card>
-  
-  <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
+    <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
 
 </ion-content>

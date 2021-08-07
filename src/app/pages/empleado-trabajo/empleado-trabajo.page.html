@@ -1,35 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>empleado-trabajo</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Empleado Trabajo</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-menu-toggle auto-hide="false" *ngFor="let n of negocio | async; let i = index">
-    <ion-item>
-      <ion-label>
-        <h2>Estado: {{pedido.estado}}</h2>
-        <h2>Precio: {{pedido.precioTotal}}</h2>
-      </ion-label>
+    <ion-item auto-hide="false" *ngFor="let n of negocio | async; let i = index">
+        <ion-item>
+            <ion-label>
+                <h2>Estado: {{pedido.estado}}</h2>
+                <h2>Precio: {{pedido.precioTotal}}</h2>
+            </ion-label>
+        </ion-item>
+
+        <p>Poner mapa en algun lado xd</p>
+
+
+        <ion-item auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
+            <ion-label>
+                <h2>Producto: {{pd.producto}}</h2>
+                <h2>Precio: {{pd.precio}}</h2>
+                <h2>Cantidad: {{pd.cantidad}}</h2>
+                <h2>Estado: {{pd.estadoCompra}} -> poner un check para indicar que ya se ha comprado </h2>
+            </ion-label>
+            <p slot="end" color="primary">{{pd.precioTotal}}</p>
+        </ion-item>
     </ion-item>
 
-    <p>Poner mapa en algun lado xd</p>
-
-
-    <ion-menu-toggle auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
-      <ion-item>
-        <ion-label>
-          <h2>Producto: {{pd.producto}}</h2>
-          <h2>Precio: {{pd.precio}}</h2>
-          <h2>Cantidad: {{pd.cantidad}}</h2>
-          <h2>Estado: {{pd.estadoCompra}}  -> poner un check para indicar que ya se ha comprado </h2>
-        </ion-label>
-        <p slot="end" color="primary">{{pd.precioTotal}}</p>
-      </ion-item>
-    </ion-menu-toggle>
-  </ion-menu-toggle>
-
-  <ion-button expand="block" (click)="chat()">Chat</ion-button>
+    <ion-button expand="block" (click)="chat()">Chat</ion-button>
 
 </ion-content>

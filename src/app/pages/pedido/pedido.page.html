@@ -1,21 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>pedido</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Pedido</ion-title>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
 
-  <ion-menu-toggle auto-hide="false" *ngFor="let c of categorias | async; let i = index">
-    <ion-item (click)="verCategoria(c)">
-      <ion-icon slot="start" [ios]="c.icono + '-outline'" [md]="c.icono"></ion-icon>
-      <ion-label>{{c.nombre}}</ion-label>
+    <ion-item auto-hide="false" *ngFor="let c of categorias | async; let i = index">
+        <ion-item (click)="verCategoria(c)">
+            <ion-icon slot="start" [ios]="c.icono + '-outline'" [md]="c.icono"></ion-icon>
+            <ion-label>{{c.nombre}}</ion-label>
+        </ion-item>
     </ion-item>
-  </ion-menu-toggle>
 
-  
-  <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
 
-  
+    <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
+
+
 
 </ion-content>

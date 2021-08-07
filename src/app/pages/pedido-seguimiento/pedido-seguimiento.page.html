@@ -1,47 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>pedido-seguimiento</ion-title>
-  </ion-toolbar>
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Pedido Seguimiento</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <div auto-hide="false" *ngFor="let n of negocio | async; let i = index">
+        <div auto-hide="false" *ngFor="let p of pedido | async; let i = index">
+            <ion-progress-bar type="indeterminate"></ion-progress-bar>
+            <ion-item>
+                <ion-label>
+                    <h2>Estado: {{p.estado}}</h2>
+                    <h2>Precio: {{p.precioTotal}}</h2>
+                </ion-label>
+            </ion-item>
+        </div>
 
-  
+        <agm-map [latitude]="n.latitud" [longitude]="n.longitud" [zoom]="zoom" (centerChange)="newAddress($event)">
+
+            <agm-marker [latitude]="lat" [longitude]="lng" iconUrl="https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png"></agm-marker>
+
+            <agm-marker [latitude]="n.latitud" [longitude]="n.longitud" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png"></agm-marker>
+        </agm-map>
+
+        <ion-item auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
+            <ion-label>
+                <h2>Producto: {{pd.producto}}</h2>
+                <h2>Precio: {{pd.precio}}</h2>
+                <h2>Cantidad: {{pd.cantidad}}</h2>
+                <h2>Estado: {{pd.estadoCompra}}</h2>
+            </ion-label>
+            <p slot="end" color="primary">{{pd.precioTotal}}</p>
+        </ion-item>
+    </div>
 
 
-  <ion-menu-toggle auto-hide="false" *ngFor="let n of negocio | async; let i = index">
-    <ion-menu-toggle auto-hide="false" *ngFor="let p of pedido | async; let i = index">
-      <ion-progress-bar type="indeterminate"></ion-progress-bar>
-      <ion-item>
-        <ion-label>
-          <h2>Estado: {{p.estado}}</h2>
-          <h2>Precio: {{p.precioTotal}}</h2>
-        </ion-label>
-      </ion-item>
-    </ion-menu-toggle>
-
-    <agm-map [latitude]="n.latitud" [longitude]="n.longitud" [zoom]="zoom" (centerChange)="newAddress($event)">
-    
-      <agm-marker [latitude]="lat" [longitude]="lng" iconUrl="https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png"></agm-marker>
-  
-      <agm-marker [latitude]="n.latitud" [longitude]="n.longitud" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png"></agm-marker>
-    </agm-map>
-
-
-    <ion-menu-toggle auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
-      <ion-item>
-        <ion-label>
-          <h2>Producto: {{pd.producto}}</h2>
-          <h2>Precio: {{pd.precio}}</h2>
-          <h2>Cantidad: {{pd.cantidad}}</h2>
-          <h2>Estado: {{pd.estadoCompra}}</h2>
-        </ion-label>
-        <p slot="end" color="primary">{{pd.precioTotal}}</p>
-      </ion-item>
-    </ion-menu-toggle>
-  </ion-menu-toggle>
-
-  
-  <ion-button expand="block" (click)="chat()">Ir chat</ion-button>
+    <ion-button expand="block" (click)="chat()">Ir chat</ion-button>
 
 </ion-content>

@@ -1,34 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{categoria.nombre}}</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Productos</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  
-  <ion-menu-toggle auto-hide="false" *ngFor="let p of productos | async; let i = index">
-    <ion-item>
-      <ion-avatar slot="start">
-        <img [src]="p.imagen">
-      </ion-avatar>
-      <ion-label>
-        <h1>{{p.nombre}}</h1>
-        <h2>{{p.precio}}</h2>
-      </ion-label>
-      <ion-button slot="end" (click)="menos(p)">
-        <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
-      </ion-button>
+    <ion-item auto-hide="false" *ngFor="let p of productos | async; let i = index">
+        <ion-avatar slot="start">
+            <img [src]="p.imagen">
+        </ion-avatar>
+        <ion-label>
+            <h1>{{p.nombre}}</h1>
+            <h2>{{p.precio}}</h2>
+        </ion-label>
+        <ion-button slot="end" (click)="menos(p)">
+            <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
+        </ion-button>
 
-      <p slot="end" color="primary">{{p.cantidad}}</p>
+        <p slot="end" color="primary">{{p.cantidad}}</p>
 
-      <ion-button slot="end" (click)="mas(p)">
-        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
-      </ion-button>
+        <ion-button slot="end" (click)="mas(p)">
+            <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+        </ion-button>
     </ion-item>
-  </ion-menu-toggle>
 
-  
-  <ion-button expand="block" (click)="confirmar()">Confirmar</ion-button>
+    <ion-button expand="block" (click)="confirmar()">Confirmar</ion-button>
 
 </ion-content>

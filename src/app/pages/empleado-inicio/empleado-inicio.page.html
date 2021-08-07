@@ -1,25 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>empleado-inicio</ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Empleado Inicio</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-menu-toggle auto-hide="false" *ngFor="let p of pedidos | async; let i = index">
-    <ion-card (click)="abrir(p)">
-      <ion-card-header>
-        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-subtitle>Local</ion-card-subtitle>
-      <ion-card-content>
-        {{p.nombreNegocio}}
-      </ion-card-content>
-      <ion-card-subtitle>Precio</ion-card-subtitle>
-      <ion-card-content>
-        {{p.precioTotal}}
-      </ion-card-content>
-    </ion-card>
-  </ion-menu-toggle>
+    <ion-item auto-hide="false" *ngFor="let p of pedidos | async; let i = index">
+        <ion-card (click)="abrir(p)">
+            <ion-card-header>
+                <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-subtitle>Local</ion-card-subtitle>
+            <ion-card-content>
+                {{p.nombreNegocio}}
+            </ion-card-content>
+            <ion-card-subtitle>Precio</ion-card-subtitle>
+            <ion-card-content>
+                {{p.precioTotal}}
+            </ion-card-content>
+        </ion-card>
+    </ion-item>
 
 </ion-content>
