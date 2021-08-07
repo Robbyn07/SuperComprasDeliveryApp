@@ -41,6 +41,18 @@ const routes: Routes = [
   {
     path: 'empleado-pedido',
     loadChildren: () => import('./pages/empleado-pedido/empleado-pedido.module').then( m => m.EmpleadoPedidoPageModule)
+  },
+  {
+    path: 'empleado-trabajo',
+    loadChildren: () => import('./pages/empleado-trabajo/empleado-trabajo.module').then( m => m.EmpleadoTrabajoPageModule)
+  },
+  {
+    path: 'empleado-chat',
+    loadChildren: () => import('./pages/empleado-chat/empleado-chat.module').then( m => m.EmpleadoChatPageModule)
+  },
+  {
+    path: 'pedido-chat',
+    loadChildren: () => import('./pages/pedido-chat/pedido-chat.module').then( m => m.PedidoChatPageModule)
   }
 
 ];

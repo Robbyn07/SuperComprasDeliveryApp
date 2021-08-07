@@ -53,6 +53,7 @@ export class ProductoPage implements OnInit {
       this.detalle.producto = p.nombre;
       this.detalle.precioTotal = p.cantidad*p.precio;
       this.detalle.idPedido = this.pedido.id;
+      this.detalle.estadoCompra = "No comprado";
 
       this.pedidoDetalle.forEach((element,index)=>{
         if(element.producto==this.detalle.producto) this.pedidoDetalle.splice(index,1);
@@ -79,6 +80,7 @@ export class ProductoPage implements OnInit {
     this.detalle.producto = p.nombre;
     this.detalle.precioTotal = p.cantidad*p.precio;
     this.detalle.idPedido = this.pedido.id;
+    this.detalle.estadoCompra = "No comprado";
 
     this.pedidoDetalle.forEach((element,index)=>{
       if(element.producto==this.detalle.producto) this.pedidoDetalle.splice(index,1);

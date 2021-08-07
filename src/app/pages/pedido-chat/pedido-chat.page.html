@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>pedido-chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-menu-toggle auto-hide="false" *ngFor="let c of chat | async; let i = index">
+    <p>{{c.id}}</p>
+    <div *ngFor="let p of c.mensajes">
+      <ion-card>
+        <ion-card-header>{{p.enviado}} dice:</ion-card-header>
+      <ion-card-content>{{p.mensaje}}</ion-card-content>
+    </ion-card>
+    </div>
+    <ion-input type="text" name="Escribir mensaje" [(ngModel)]="mensaje" placeholder="Escribir mensaje" required></ion-input>
+    <ion-button expand="block" (click)="nuevoMensaje(c)">Enviar Mensaje</ion-button>
+  </ion-menu-toggle>
+
+
+  
+  <ion-button expand="block" (click)="regresar()">Regresar</ion-button>
+  
+</ion-content>

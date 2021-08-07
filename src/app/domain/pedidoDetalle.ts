@@ -6,4 +6,5 @@ export class PedidoDetalle{
     precio: number;
     cantidad: number;
     precioTotal: number;
+    estadoCompra: string;
 }

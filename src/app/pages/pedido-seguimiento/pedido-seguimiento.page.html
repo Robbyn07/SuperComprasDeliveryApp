@@ -26,6 +26,22 @@
   
       <agm-marker [latitude]="n.latitud" [longitude]="n.longitud" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png"></agm-marker>
     </agm-map>
+
+
+    <ion-menu-toggle auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
+      <ion-item>
+        <ion-label>
+          <h2>Producto: {{pd.producto}}</h2>
+          <h2>Precio: {{pd.precio}}</h2>
+          <h2>Cantidad: {{pd.cantidad}}</h2>
+          <h2>Estado: {{pd.estadoCompra}}</h2>
+        </ion-label>
+        <p slot="end" color="primary">{{pd.precioTotal}}</p>
+      </ion-item>
+    </ion-menu-toggle>
   </ion-menu-toggle>
+
+  
+  <ion-button expand="block" (click)="chat()">Ir chat</ion-button>
 
 </ion-content>

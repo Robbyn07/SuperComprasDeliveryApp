@@ -8,17 +8,18 @@ import { NegociosService } from '../../services/negocios.service';
 import { Negocio } from '../../domain/negocio';
 
 @Component({
-  selector: 'app-empleado-pedido',
-  templateUrl: './empleado-pedido.page.html',
-  styleUrls: ['./empleado-pedido.page.scss'],
+  selector: 'app-empleado-trabajo',
+  templateUrl: './empleado-trabajo.page.html',
+  styleUrls: ['./empleado-trabajo.page.scss'],
 })
-export class EmpleadoPedidoPage implements OnInit {
+export class EmpleadoTrabajoPage implements OnInit {
 
   pedido:Pedido;
   idNegocio:string;
   idCliente:string;
   negocio:any;
   pedidoDetalle:any;
+
   constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService) { 
     route.queryParams.subscribe(params =>{
       this.pedido = params.pedido;
@@ -37,7 +38,7 @@ export class EmpleadoPedidoPage implements OnInit {
     this.pedidoDetalle = this.pedidoDetalleService.getDetalle(this.pedido.id);
   }
 
-  confirmar(){
+  chat(){
     this.pedido.estado = "aceptado";
     this.pedidoService.save(this.pedido);
     
@@ -48,8 +49,7 @@ export class EmpleadoPedidoPage implements OnInit {
         ipCliente:this.idCliente,
       }
     }
-    this.router.navigate(["/empleado-trabajo"],params)
+    this.router.navigate(["/empleado-chat"],params)
   }
-  
 
 }

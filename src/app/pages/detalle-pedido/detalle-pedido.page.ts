@@ -5,6 +5,8 @@ import { PedidoDetalle } from '../../domain/pedidoDetalle';
 import { PedidoService } from '../../services/pedido.service';
 import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { NegociosService } from '../../services/negocios.service';
+import { Chat } from '../../domain/chat';
+import { ChatService } from '../../services/chat.service';
 
 
 
@@ -19,10 +21,18 @@ export class DetallePedidoPage implements OnInit {
   pedidoDetalle:Array<PedidoDetalle>;
   negocio:any;
 
+  chat: Chat = new Chat();
+
   pr:number;
 
+  men={
+    enviado:"",
+    mensaje:""
+  }
 
-  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService) { 
+
+  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, 
+        private negociosService:NegociosService, private chatService:ChatService) { 
     route.queryParams.subscribe(params =>{
       this.pedido = params.pedido;
       this.pedidoDetalle = params.pedidoDetalle;
@@ -49,7 +59,17 @@ export class DetallePedidoPage implements OnInit {
     this.pedidoDetalle.forEach((element,index)=>{
       this.pedidoDetalleService.save(element);
     });
-    console.log("se realizo el pedido (se guardo en la base de datos)")
+
+    this.chat.id = this.chatService.generarId();
+    this.chat.idPedido = this.pedido.id;
+    this.men.enviado = "empleado";
+    this.men.mensaje = "He realizado un pedido"
+    this.chat.mensajes.push(this.men);
+    this.chatService.save(this.chat)
+
+
+
+    //console.log("se realizo el pedido (se guardo en la base de datos)")
     //console.log(this.pedido.id);
     //console.log(this.pedido.negocio);
     let params: NavigationExtras = {

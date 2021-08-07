@@ -41,7 +41,6 @@ export class PedidoSeguimientoPage implements OnInit {
   }
 
   async ngOnInit() {
-    console.log("-----------------------")
     //CUANDO EXISTA UN CLIENTE, SE DEBE OBTENER LA UBICACION DEL CLIENTE PARA LAS VARIABLES DE lat Y lng
     //console.log(this.id)
     //console.log(this.idNegocio)
@@ -63,6 +62,16 @@ export class PedidoSeguimientoPage implements OnInit {
       this.locationService.getAddressOfLocation(this.centerLocation);
       console.log(this.centerLocation);
     }*/
+  }
+
+  chat(){
+    let params: NavigationExtras = {
+      queryParams:{
+        id:this.id,
+        idNegocio:this.idNegocio,
+      }
+    }
+    this.router.navigate(["/pedido-chat"],params)
   }
 
 

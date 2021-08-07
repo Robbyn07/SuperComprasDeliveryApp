@@ -1,25 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { Pedido } from 'src/app/domain/pedido';
-import { PedidoDetalle } from '../../domain/pedidoDetalle';
 import { PedidoService } from '../../services/pedido.service';
 import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { NegociosService } from '../../services/negocios.service';
-import { Negocio } from '../../domain/negocio';
+import { ChatService } from '../../services/chat.service';
+import { Chat } from '../../domain/chat';
+import { Observable } from 'rxjs';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
-  selector: 'app-empleado-pedido',
-  templateUrl: './empleado-pedido.page.html',
-  styleUrls: ['./empleado-pedido.page.scss'],
+  selector: 'app-empleado-chat',
+  templateUrl: './empleado-chat.page.html',
+  styleUrls: ['./empleado-chat.page.scss'],
 })
-export class EmpleadoPedidoPage implements OnInit {
+export class EmpleadoChatPage implements OnInit {
 
   pedido:Pedido;
   idNegocio:string;
   idCliente:string;
-  negocio:any;
-  pedidoDetalle:any;
-  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService) { 
+
+  chat: any;
+  mensaje:string;
+
+  men={
+    enviado:"",
+    mensaje:""
+  }
+
+  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService, private chatService:ChatService) { 
     route.queryParams.subscribe(params =>{
       this.pedido = params.pedido;
       this.idNegocio = params.idNegocio;
@@ -33,11 +42,18 @@ export class EmpleadoPedidoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.negocio = this.negociosService.getNegocio(this.idNegocio);
-    this.pedidoDetalle = this.pedidoDetalleService.getDetalle(this.pedido.id);
+    this.chat = this.chatService.getChat(this.pedido.id);
   }
 
-  confirmar(){
+  nuevoMensaje(c:Chat){
+    this.men.enviado = "empleado";
+    this.men.mensaje = this.mensaje
+    c.mensajes.push(this.men);
+    this.chatService.save(c);
+    this.mensaje=""
+  }
+
+  regresar(){
     this.pedido.estado = "aceptado";
     this.pedidoService.save(this.pedido);
     
@@ -50,6 +66,5 @@ export class EmpleadoPedidoPage implements OnInit {
     }
     this.router.navigate(["/empleado-trabajo"],params)
   }
-  
 
 }
