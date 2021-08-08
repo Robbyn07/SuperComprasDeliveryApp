@@ -8,4 +8,8 @@ export class Pedido{
     estado:string;
     idCliente:string;
     nombreCliente:string;
+    lonEmp:number;
+    latEmp:number;
+    lonDes:number;
+    latDes:number;
 }

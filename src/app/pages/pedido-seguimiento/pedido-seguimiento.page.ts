@@ -18,6 +18,7 @@ export class PedidoSeguimientoPage implements OnInit {
   id:string;
   idNegocio:string;
   
+  //cambiar por el destino del cliente
   lat = -2.911221;
   lng = -79.057738;
 
@@ -71,6 +72,8 @@ export class PedidoSeguimientoPage implements OnInit {
     console.log(this.currentLocation);
 
   }
+
+  
 
 
   

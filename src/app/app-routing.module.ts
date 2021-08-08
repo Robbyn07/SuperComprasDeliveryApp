@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'folder/Inbox',
     pathMatch: 'full'
   },
   {
@@ -54,14 +54,9 @@ const routes: Routes = [
   {
     path: 'pedido-chat',
     loadChildren: () => import('./pages/pedido-chat/pedido-chat.module').then( m => m.PedidoChatPageModule)
-  },
-  {
-    path: 'registro',
-    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'pedido-historial',
+    loadChildren: () => import('./pages/pedido-historial/pedido-historial.module').then( m => m.PedidoHistorialPageModule)
   }
 
 
