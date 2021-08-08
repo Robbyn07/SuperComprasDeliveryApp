@@ -52,4 +52,10 @@ export class EmpleadoTrabajoPage implements OnInit {
     this.router.navigate(["/empleado-chat"],params)
   }
 
+
+  cambioEstado(){
+    //cambiar el pedido de estado de (Aceptado a Entregando) y de (Entregando a Finalizado)
+    //y cambiar los datos del destino del pedido por la posicion del cliente
+  }
+
 }

@@ -17,14 +17,17 @@
                     <h2>Precio: {{p.precioTotal}}</h2>
                 </ion-label>
             </ion-item>
+            <agm-map [latitude]="n.latitud" [longitude]="n.longitud" [zoom]="zoom" (centerChange)="newAddress($event)">
+
+                <agm-marker [latitude]="lat" [longitude]="lng" iconUrl="https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png"></agm-marker>
+    
+                <agm-marker [latitude]="p.latEmp" [longitude]="p.lonEmp" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png"></agm-marker>
+    
+                <agm-marker [latitude]="p.latDes" [longitude]="p.lonDes" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png"></agm-marker>
+            </agm-map>
         </div>
 
-        <agm-map [latitude]="n.latitud" [longitude]="n.longitud" [zoom]="zoom" (centerChange)="newAddress($event)">
-
-            <agm-marker [latitude]="lat" [longitude]="lng" iconUrl="https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png"></agm-marker>
-
-            <agm-marker [latitude]="n.latitud" [longitude]="n.longitud" iconUrl="https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png"></agm-marker>
-        </agm-map>
+        
 
         <ion-item auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
             <ion-label>
@@ -37,7 +40,7 @@
         </ion-item>
     </div>
 
-
+    
     <ion-button expand="block" (click)="chat()">Ir chat</ion-button>
 
 </ion-content>
