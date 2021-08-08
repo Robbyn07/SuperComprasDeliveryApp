@@ -8,6 +8,8 @@ import { LocationService } from '../../services/location.service';
 import { NegociosService } from '../../services/negocios.service';
 import { AlertController } from '@ionic/angular';
 
+
+
 @Component({
   selector: 'app-pedido-seguimiento',
   templateUrl: './pedido-seguimiento.page.html',
@@ -22,6 +24,10 @@ export class PedidoSeguimientoPage implements OnInit {
   lat = -2.911221;
   lng = -79.057738;
 
+  borrar:string;
+
+  
+
   pedido:any;
   pedidoDetalle:any;
   negocio:any;
@@ -31,6 +37,9 @@ export class PedidoSeguimientoPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, 
         private locationService:LocationService, private negociosService:NegociosService, private alertController:AlertController) { 
+
+    
+
     route.queryParams.subscribe(params =>{
       this.id = params.id;
       this.idNegocio = params.idNegocio;
@@ -42,6 +51,10 @@ export class PedidoSeguimientoPage implements OnInit {
   }
 
   async ngOnInit() {
+
+
+
+
     //CUANDO EXISTA UN CLIENTE, SE DEBE OBTENER LA UBICACION DEL CLIENTE PARA LAS VARIABLES DE lat Y lng
     //console.log(this.id)
     //console.log(this.idNegocio)
@@ -53,6 +66,8 @@ export class PedidoSeguimientoPage implements OnInit {
   }
 
   
+
+
 
 
   
@@ -77,7 +92,9 @@ export class PedidoSeguimientoPage implements OnInit {
     this.router.navigate(["/pedido-chat"],params)
   }
 
-
+  borrarr(){
+    console.log(this.borrar);
+  }
 
 
 }

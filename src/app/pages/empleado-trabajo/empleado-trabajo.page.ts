@@ -15,6 +15,7 @@ import { Negocio } from '../../domain/negocio';
 export class EmpleadoTrabajoPage implements OnInit {
 
   pedido:Pedido;
+  pedidoBueno:any;
   idNegocio:string;
   idCliente:string;
   negocio:any;
@@ -36,6 +37,7 @@ export class EmpleadoTrabajoPage implements OnInit {
   ngOnInit() {
     this.negocio = this.negociosService.getNegocio(this.idNegocio);
     this.pedidoDetalle = this.pedidoDetalleService.getDetalle(this.pedido.id);
+    this.pedidoBueno = this.pedidoService.getPedido(this.pedido.id);
   }
 
   chat(){
