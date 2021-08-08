@@ -38,7 +38,7 @@ export class EmpleadoPedidoPage implements OnInit {
   }
 
   confirmar(){
-    this.pedido.estado = "aceptado";
+    this.pedido.estado = "Aceptado";
     this.pedidoService.save(this.pedido);
     
     let params: NavigationExtras = {

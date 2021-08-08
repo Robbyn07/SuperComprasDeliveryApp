@@ -15,6 +15,7 @@ import { Negocio } from '../../domain/negocio';
 export class EmpleadoTrabajoPage implements OnInit {
 
   pedido:Pedido;
+  pedidoBueno:any;
   idNegocio:string;
   idCliente:string;
   negocio:any;
@@ -36,6 +37,7 @@ export class EmpleadoTrabajoPage implements OnInit {
   ngOnInit() {
     this.negocio = this.negociosService.getNegocio(this.idNegocio);
     this.pedidoDetalle = this.pedidoDetalleService.getDetalle(this.pedido.id);
+    this.pedidoBueno = this.pedidoService.getPedido(this.pedido.id);
   }
 
   chat(){
@@ -50,6 +52,12 @@ export class EmpleadoTrabajoPage implements OnInit {
       }
     }
     this.router.navigate(["/empleado-chat"],params)
+  }
+
+
+  cambioEstado(){
+    //cambiar el pedido de estado de (Aceptado a Entregando) y de (Entregando a Finalizado)
+    //y cambiar los datos del destino del pedido por la posicion del cliente
   }
 
 }

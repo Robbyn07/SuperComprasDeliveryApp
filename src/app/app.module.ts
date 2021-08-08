@@ -13,6 +13,12 @@ import { environment } from 'src/environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
+
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+
+import {AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,9 +29,10 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
             AngularFirestoreModule,
             AgmCoreModule.forRoot({
               apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
-            })
+            }),
+            AngularFireAuthModule
           ],
-  providers: [ LocalNotifications, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ LocalNotifications, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Geolocation, NativeGeocoder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

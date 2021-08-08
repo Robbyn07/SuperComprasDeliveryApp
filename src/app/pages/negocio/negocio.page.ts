@@ -36,6 +36,10 @@ export class NegocioPage implements OnInit {
     this.pedido.nombreNegocio = this.negocio.nombre;
     this.pedido.idCliente = "nada we";
     this.pedido.nombreCliente = "el nombre, cuando exista";
+    this.pedido.lonEmp = -79.057738;
+    this.pedido.latEmp = -2.911221;
+    this.pedido.lonDes = this.negocio.longitud;
+    this.pedido.latDes = this.negocio.latitud;
     let params: NavigationExtras = {
       queryParams:{
         negocio:this.negocio,

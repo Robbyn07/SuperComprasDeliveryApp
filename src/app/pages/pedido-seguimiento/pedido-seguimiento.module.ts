@@ -8,6 +8,7 @@ import { PedidoSeguimientoPageRoutingModule } from './pedido-seguimiento-routing
 
 import { PedidoSeguimientoPage } from './pedido-seguimiento.page';
 import { AgmCoreModule } from '@agm/core';
+import { MapaComponent } from '../../components/mapa/mapa.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
     })
   ],
-  declarations: [PedidoSeguimientoPage]
+  declarations: [PedidoSeguimientoPage, MapaComponent]
 })
 export class PedidoSeguimientoPageModule {}

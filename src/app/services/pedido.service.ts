@@ -32,6 +32,28 @@ export class PedidoService {
         ref => ref.where("id", "==", id)).valueChanges();
   }
 
+  getPedidosFinalizadosCliente(id:string): Observable<any[]>{
+    return this.afs.collection("pedido",
+        ref => ref.where("idCliente", "==", id).where("estado","==","Finalizado")).valueChanges();
+  }
+
+  getPedidosEnviadoCliente(id:string): Observable<any[]>{
+    return this.afs.collection("pedido",
+        ref => ref.where("estado","==","Enviado").where("idCliente","==",id)).valueChanges();
+  }
+
+  getPedidosAceptadoCliente(id:string): Observable<any[]>{
+    return this.afs.collection("pedido",
+        ref => ref.where("estado","==","Aceptado").where("idCliente","==",id)).valueChanges();
+  }
+
+  getPedidosEntregandoCliente(id:string): Observable<any[]>{
+    return this.afs.collection("pedido",
+        ref => ref.where("estado","==","Entregando").where("idCliente","==",id)).valueChanges();
+  }
+
+
+
   getPedidosEnviados(): Observable<any[]>{
     return this.afs.collection("pedido",
         ref => ref.where("estado", "==", "Enviado")).valueChanges();

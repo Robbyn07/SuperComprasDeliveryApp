@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label> Correo: </ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label> Contraseña: </ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+
+  <p> {{ alerta }}</p>
+
+  <ion-item-divider>
+    <ion-button size="default" (click)="logeo()" > Ingresar </ion-button>
+  </ion-item-divider>
+
+  <ion-item-divider>
+    <p>no tienes cuenta, registrate   </p>
+    <ion-button size="small" (click)="pagRegistro()" > Registrarse </ion-button>
+  </ion-item-divider>
+
+  <ion-item-divider>
+    <p>o registrate con tu cuenta de Google</p>
+  </ion-item-divider>
+
+</ion-content>
