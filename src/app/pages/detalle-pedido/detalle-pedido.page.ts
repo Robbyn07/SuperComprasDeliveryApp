@@ -8,6 +8,7 @@ import { NegociosService } from '../../services/negocios.service';
 import { Chat } from '../../domain/chat';
 import { ChatService } from '../../services/chat.service';
 import { Plugins} from '@capacitor/core';
+import { Negocio } from '../../domain/negocio';
 const { LocalNotifications } = Plugins;
 
 
@@ -22,6 +23,7 @@ export class DetallePedidoPage implements OnInit {
   pedidoDetalle:Array<PedidoDetalle>;
   negocio:any;
 
+  n:Negocio;
   chat: Chat = new Chat();
 
   pr:number;
@@ -35,9 +37,11 @@ export class DetallePedidoPage implements OnInit {
   constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, 
         private negociosService:NegociosService, private chatService:ChatService) { 
     route.queryParams.subscribe(params =>{
+      this.n = params.negocio;
       this.pedido = params.pedido;
       this.pedidoDetalle = params.pedidoDetalle;
       if(this.router.getCurrentNavigation().extras.queryParams){
+        this.n = this.router.getCurrentNavigation().extras.queryParams.negocio;
         this.pedido = this.router.getCurrentNavigation().extras.queryParams.pedido;
         this.pedidoDetalle = this.router.getCurrentNavigation().extras.queryParams.pedidoDetalle;
       };
@@ -56,7 +60,6 @@ export class DetallePedidoPage implements OnInit {
   }
 
   pedir(){
-    this.enviarNotificacion();
 
     this.pedidoService.save(this.pedido);
     this.pedidoDetalle.forEach((element,index)=>{
@@ -69,6 +72,8 @@ export class DetallePedidoPage implements OnInit {
     this.men.mensaje = "He realizado un pedido"
     this.chat.mensajes.push(this.men);
     this.chatService.save(this.chat)
+    
+    this.enviarNotificacion();
 
     //console.log("se realizo el pedido (se guardo en la base de datos)")
     //console.log(this.pedido.id);
@@ -80,6 +85,17 @@ export class DetallePedidoPage implements OnInit {
       }
     }
     this.router.navigate(["/pedido-seguimiento"],params)
+  }
+
+  regresar(){
+    let params: NavigationExtras = {
+      queryParams:{
+        negocio:this.n,
+        pedido:this.pedido,
+        pedidoDetalle:this.pedidoDetalle,
+      }
+    }
+    this.router.navigate(["/pedido"],params)
   }
 
   enviarNotificacion(){

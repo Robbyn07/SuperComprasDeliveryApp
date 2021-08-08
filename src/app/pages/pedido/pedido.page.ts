@@ -56,6 +56,7 @@ export class PedidoPage implements OnInit {
   pedir(){
     let params: NavigationExtras = {
       queryParams:{
+        negocio:this.negocio,
         pedido:this.pedido,
         pedidoDetalle:this.pedidoDetalle,
       }

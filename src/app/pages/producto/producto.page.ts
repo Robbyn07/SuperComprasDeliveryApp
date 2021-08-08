@@ -105,13 +105,5 @@ export class ProductoPage implements OnInit {
     this.router.navigate(["/pedido"],params)
   }
 
-  regresar(){
-    let params: NavigationExtras = {
-      queryParams:{
-        negocio:this.negocio,
-      }
-    }
-    this.router.navigate(["/pedido"], params)
-  }
 
 }
