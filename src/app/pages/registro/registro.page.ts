@@ -22,7 +22,8 @@ export class RegistroPage implements OnInit {
   async registro(){
     const user = await this.auth.onRegistro(this.user);
     if(user){
-      //this.ID = this.auth.verificacion();
+      this.ID = this.auth.verificacion();
+      console.log(" ES EL ID (EMAL)",  this.ID)
       this.auth.save(this.user);
       console.log("exito de registro ");
       this.router.navigate(["/folder/Imbox"])

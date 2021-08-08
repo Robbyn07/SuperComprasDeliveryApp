@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   verifica: any;
 
   rol: any;
+  no: boolean;
 
   constructor( private router: Router, private auth: AutentificacionService ) { }
 
@@ -27,6 +28,15 @@ export class LoginPage implements OnInit {
     
     //console.log("2   ", this.verifica);
     if(user){
+      this.user2 = this.auth.getUsuario(this.user.email);
+      this.auth.NO(this.user2);
+      if(!this.auth.NO(this.user2)){
+        this.router.navigate(["/folder/Inbox"])
+      }else{
+        this.router.navigate(["/empleado-inicio"])
+      }
+
+      /*
       console.log("exito login")
       console.log("ver email " , this.user.email);
       this.verifica = this.auth.verificacion();
@@ -48,9 +58,11 @@ export class LoginPage implements OnInit {
       }else{
         this.router.navigate(["/empleado-inicio"])
       }
+      */
     }else{
       console.log("error en el loggeo")
     }
+    
   }
 
   pagRegistro(){

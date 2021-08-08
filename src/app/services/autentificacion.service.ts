@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { rejects } from 'assert';
+import { resolve } from 'dns';
 import { Observable } from 'rxjs';
 import { Usuario } from '../domain/usuario';
 
@@ -38,9 +40,8 @@ export class AutentificacionService {
   //verificacion quien inicio sesion
   async verificacion(){
     try{
-      console.log(" VER " , (await this.afAuth.currentUser).uid) ;
+      //console.log(" VER " , (await this.afAuth.currentUser).uid) ;
       this.emailV = (await this.afAuth.currentUser).email;
-      console.log(" VER 2  " ,  this.emailV);
       return this.emailV;
       
     }catch(error){
@@ -70,8 +71,21 @@ export class AutentificacionService {
   ver: Usuario = new Usuario();
 
   getUsuario(email: any) {
+    var promise = new Promise((resolve, rejects) => {
+      this.afs.collection("usuario", )
+
+    }     )
     console.log("llega getUser")
-    return this.afs.collection("usuario", ref => ref.where("email", "==", email)).valueChanges();
+    return this.afs.collection("usuario", ref => ref.where("email", "==", email))
+
+  }
+
+  NO(user: Usuario){
+    if(user.rol == "cliente"){
+      return true;
+    }else{
+      return false;
+    }
 
   }
 
