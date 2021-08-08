@@ -16,6 +16,8 @@ import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
+import {AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +28,8 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
             AngularFirestoreModule,
             AgmCoreModule.forRoot({
               apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
-            })
+            }),
+            AngularFireAuthModule
           ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },Geolocation, NativeGeocoder],
   bootstrap: [AppComponent],
