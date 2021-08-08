@@ -5,6 +5,8 @@ import { ProductoService } from '../../services/producto.service';
 import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { Categoria } from '../../domain/categoria';
 import { PedidoDetalle } from '../../domain/pedidoDetalle';
+import { NegociosService } from '../../services/negocios.service';
+import { Negocio } from '../../domain/negocio';
 
 @Component({
   selector: 'app-producto',
@@ -18,14 +20,16 @@ export class ProductoPage implements OnInit {
   pedidoDetalle:Array<PedidoDetalle>;
   productos:any;
   detalle:PedidoDetalle;
+  negocio:Negocio;
 
-
-  constructor(private route: ActivatedRoute, private router:Router, private productoService:ProductoService, private pedidoDetalleService:PedidoDetalleService) { 
+  constructor(private route: ActivatedRoute, private router:Router,private negociosService:NegociosService, private productoService:ProductoService, private pedidoDetalleService:PedidoDetalleService) { 
     route.queryParams.subscribe(params =>{
+      this.negocio = params.negocio;
       this.categoria = params.categoria;
       this.pedido = params.pedido;
       this.pedidoDetalle = params.pedidoDetalle;
       if(this.router.getCurrentNavigation().extras.queryParams){
+        this.negocio = this.router.getCurrentNavigation().extras.queryParams.negocio;
         this.categoria = this.router.getCurrentNavigation().extras.queryParams.categoria;
         this.pedido = this.router.getCurrentNavigation().extras.queryParams.pedido;
         this.pedidoDetalle = this.router.getCurrentNavigation().extras.queryParams.pedidoDetalle;
@@ -101,6 +105,13 @@ export class ProductoPage implements OnInit {
     this.router.navigate(["/pedido"],params)
   }
 
-
+  regresar(){
+    let params: NavigationExtras = {
+      queryParams:{
+        negocio:this.negocio,
+      }
+    }
+    this.router.navigate(["/pedido"], params)
+  }
 
 }

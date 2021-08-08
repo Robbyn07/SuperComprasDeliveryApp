@@ -38,6 +38,7 @@ export class NegocioPage implements OnInit {
     this.pedido.nombreCliente = "el nombre, cuando exista";
     let params: NavigationExtras = {
       queryParams:{
+        negocio:this.negocio,
         pedido:this.pedido,
         pedidoDetalle:this.pedidoDetalle,
       }

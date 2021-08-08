@@ -39,7 +39,7 @@ export class EmpleadoTrabajoPage implements OnInit {
   }
 
   chat(){
-    this.pedido.estado = "aceptado";
+    this.pedido.estado = "Aceptado";
     this.pedidoService.save(this.pedido);
     
     let params: NavigationExtras = {

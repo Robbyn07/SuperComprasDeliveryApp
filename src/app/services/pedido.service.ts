@@ -34,7 +34,7 @@ export class PedidoService {
 
   getPedidosEnviados(): Observable<any[]>{
     return this.afs.collection("pedido",
-        ref => ref.where("estado", "==", "enviado")).valueChanges();
+        ref => ref.where("estado", "==", "Enviado")).valueChanges();
   }
 
 }

@@ -113,7 +113,16 @@ ion-item.selected {
     --color: var(--ion-color-primary);
 }
 
-ion-list-header {
+ion-toolbar {
     --background: #4169e1;
     --color: #ffffff;
+}
+
+ion-item#prueba_item {
+    --background: #4169e1;
+    --color: #ffffff;
+}
+
+p {
+    color: #ffffff;
 }

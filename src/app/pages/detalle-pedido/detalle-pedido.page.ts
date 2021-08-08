@@ -45,7 +45,7 @@ export class DetallePedidoPage implements OnInit {
 
   ngOnInit() {
     this.negocio = this.negociosService.getNegocio(this.pedido.idNegocio);
-    this.pedido.estado = "enviado";
+    this.pedido.estado = "Enviado";
     this.pedido.fecha = new Date();
     this.pedido.precioTotal = 0;
     this.pedidoDetalle.forEach((element,index)=>{
@@ -66,8 +66,6 @@ export class DetallePedidoPage implements OnInit {
     this.men.mensaje = "He realizado un pedido"
     this.chat.mensajes.push(this.men);
     this.chatService.save(this.chat)
-
-
 
     //console.log("se realizo el pedido (se guardo en la base de datos)")
     //console.log(this.pedido.id);
