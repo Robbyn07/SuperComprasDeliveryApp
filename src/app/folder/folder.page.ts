@@ -7,8 +7,6 @@ import {
   PushNotifications,
   Token
 } from '@capacitor/push-notifications';
-import { Plugins} from '@capacitor/core';
-const { LocalNotifications } = Plugins;
 
 @Component({
   selector: 'app-folder',
@@ -71,19 +69,6 @@ export class FolderPage implements OnInit {
     this.router.navigate(["/negocio"],params)
   }
 
-  enviarNotificacion(){
-    LocalNotifications.schedule({
-      notifications: [{
-        id: 1,
-        title: 'SuperCompras Delivery',
-        body: 'Nuevo Pedido Creado',
-        sound: null,
-        attachments: null,
-        actionTypeId: "",
-        extra: null
-      }]
-      
-    });
-  }
+  
 
 }

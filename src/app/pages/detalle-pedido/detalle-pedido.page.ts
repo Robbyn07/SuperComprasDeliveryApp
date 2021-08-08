@@ -7,7 +7,8 @@ import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { NegociosService } from '../../services/negocios.service';
 import { Chat } from '../../domain/chat';
 import { ChatService } from '../../services/chat.service';
-
+import { Plugins} from '@capacitor/core';
+const { LocalNotifications } = Plugins;
 
 
 @Component({
@@ -55,6 +56,8 @@ export class DetallePedidoPage implements OnInit {
   }
 
   pedir(){
+    this.enviarNotificacion();
+
     this.pedidoService.save(this.pedido);
     this.pedidoDetalle.forEach((element,index)=>{
       this.pedidoDetalleService.save(element);
@@ -77,6 +80,21 @@ export class DetallePedidoPage implements OnInit {
       }
     }
     this.router.navigate(["/pedido-seguimiento"],params)
+  }
+
+  enviarNotificacion(){
+    LocalNotifications.schedule({
+      notifications: [{
+        id: 1,
+        title: 'SuperCompras Delivery',
+        body: 'Nuevo Pedido Creado',
+        sound: null,
+        attachments: null,
+        actionTypeId: "",
+        extra: null
+      }]
+      
+    });
   }
 
 }
