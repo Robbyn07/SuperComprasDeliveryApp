@@ -28,6 +28,19 @@ export class PedidoSeguimientoPage implements OnInit {
   zoom=16;
 
 
+  currentLocation: any;
+  lati = null;
+  longi = null;
+  direccion: any;
+
+  icons = {
+    client: "https://cdn1.iconfinder.com/data/icons/ecommerce-61/48/eccomerce_-_location-48.png",
+    shop: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Chartreuse.png",
+    center: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png",
+    pointer: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Ball-Azure.png"
+  };
+
+
   constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, 
         private locationService:LocationService, private negociosService:NegociosService, private alertController:AlertController) { 
     route.queryParams.subscribe(params =>{
@@ -41,6 +54,8 @@ export class PedidoSeguimientoPage implements OnInit {
   }
 
   async ngOnInit() {
+    
+
     //CUANDO EXISTA UN CLIENTE, SE DEBE OBTENER LA UBICACION DEL CLIENTE PARA LAS VARIABLES DE lat Y lng
     //console.log(this.id)
     //console.log(this.idNegocio)
@@ -48,6 +63,12 @@ export class PedidoSeguimientoPage implements OnInit {
     this.pedidoDetalle = this.pedidoDetalleService.getDetalle(this.id);
     this.negocio = this.negociosService.getNegocio(this.idNegocio);
     //cuando exista un empleado, obtener la ubicacion del tipo
+
+    this.currentLocation = await this.locationService.getCurrentLocation();
+    this.lati = this.currentLocation.latitude;
+    this.longi = this.currentLocation.longitude;
+    this.direccion = this.currentLocation.address;
+    console.log(this.currentLocation);
 
   }
 
