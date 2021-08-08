@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>pedido-historial</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h2>Pedidos Enviados</h2>
+  <ion-list auto-hide="false" *ngFor="let p of pedidosEnviado | async; let i = index">
+    <ion-item (click)="ver(p)">
+      <ion-card-header>
+        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-card-subtitle>Local:</ion-card-subtitle>
+          {{p.nombreNegocio}}
+      </ion-card-content>
+      <ion-card-content>
+          <ion-card-subtitle>Precio:</ion-card-subtitle>
+          {{p.precioTotal}} $
+      </ion-card-content>
+    </ion-item>
+  </ion-list>
+
+  <h2>Pedidos Aceptados</h2>
+  <ion-list auto-hide="false" *ngFor="let p of pedidosAceptado | async; let i = index">
+    <ion-item (click)="ver(p)">
+      <ion-card-header>
+        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-card-subtitle>Local:</ion-card-subtitle>
+          {{p.nombreNegocio}}
+      </ion-card-content>
+      <ion-card-content>
+          <ion-card-subtitle>Precio:</ion-card-subtitle>
+          {{p.precioTotal}} $
+      </ion-card-content>
+    </ion-item>
+  </ion-list>
+
+  <h2>Pedidos Entregando</h2>
+  <ion-list auto-hide="false" *ngFor="let p of pedidosEntregando | async; let i = index">
+    <ion-item (click)="ver(p)">
+      <ion-card-header>
+        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-card-subtitle>Local:</ion-card-subtitle>
+          {{p.nombreNegocio}}
+      </ion-card-content>
+      <ion-card-content>
+          <ion-card-subtitle>Precio:</ion-card-subtitle>
+          {{p.precioTotal}} $
+      </ion-card-content>
+    </ion-item>
+  </ion-list>
+
+  <h2>Pedidos Finalizados</h2>
+  <ion-list auto-hide="false" *ngFor="let p of pedidosFinalizado | async; let i = index">
+    <ion-item>
+      <ion-card-header>
+        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-card-subtitle>Local:</ion-card-subtitle>
+          {{p.nombreNegocio}}
+      </ion-card-content>
+      <ion-card-content>
+          <ion-card-subtitle>Precio:</ion-card-subtitle>
+          {{p.precioTotal}} $
+      </ion-card-content>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

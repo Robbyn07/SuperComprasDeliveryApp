@@ -54,7 +54,11 @@ const routes: Routes = [
   {
     path: 'pedido-chat',
     loadChildren: () => import('./pages/pedido-chat/pedido-chat.module').then( m => m.PedidoChatPageModule)
+  },  {
+    path: 'pedido-historial',
+    loadChildren: () => import('./pages/pedido-historial/pedido-historial.module').then( m => m.PedidoHistorialPageModule)
   }
+
 
 ];
 
