@@ -113,4 +113,12 @@ export class DetallePedidoPage implements OnInit {
     });
   }
 
+
+  seleccionMetodoPago(opcion:string){
+    this.pedido.metodoPago = opcion;
+
+
+    console.log(this.pedido.metodoPago)
+  }
+
 }

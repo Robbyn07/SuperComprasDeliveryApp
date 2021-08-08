@@ -37,6 +37,24 @@
         </ion-item>
     </div>
 
+    
+    <ion-radio-group value="biff">
+        <ion-list-header>
+        <ion-label>Metodo de Pago</ion-label>
+        </ion-list-header>
+    
+        <ion-item (click)="seleccionMetodoPago('Efectivo')">
+        <ion-label>Efectivo</ion-label>
+        <ion-radio slot="start"></ion-radio>
+        </ion-item>
+    
+        <ion-item  (click)="seleccionMetodoPago('Contra Entrega')">
+        <ion-label>Contra Entrega</ion-label>
+        <ion-radio slot="start"></ion-radio>
+        </ion-item>
+    
+    </ion-radio-group>
+
     <ion-button expand="block" (click)="pedir()">Finalizar Pedido</ion-button>
 
 </ion-content>
