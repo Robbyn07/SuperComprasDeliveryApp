@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "163468485265",
+    "project_id": "supercomprasdeliveryapp",
+    "storage_bucket": "supercomprasdeliveryapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163468485265:android:f6d34153a818c0f6489530",
+        "android_client_info": {
+          "package_name": "com.SuperCompras.Deliver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163468485265-297vo5qmmc9ph84tuo7q5rpee9o409c0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB0qWUOZLn7DStFNikvklWSx3XYQFQXDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163468485265-297vo5qmmc9ph84tuo7q5rpee9o409c0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

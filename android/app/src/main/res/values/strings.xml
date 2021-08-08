@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SuperCompras Delivery</string>
+    <string name="title_activity_main">SuperCompras Delivery</string>
+    <string name="package_name">com.SuperCompras.Deliver</string>
+    <string name="custom_url_scheme">com.SuperCompras.Deliver</string>
+</resources>

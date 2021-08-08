@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { NegociosService } from '../services/negocios.service';
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token
+} from '@capacitor/push-notifications';
+import { Plugins} from '@capacitor/core';
+const { LocalNotifications } = Plugins;
 
 @Component({
   selector: 'app-folder',
@@ -14,9 +22,44 @@ export class FolderPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,private router:Router, private negociosService:NegociosService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
     this.negocios = this.negociosService.getNegocios();
+
+    PushNotifications.requestPermissions().then(result => {
+      if (result.receive === 'granted') {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Show some error
+        console.log("Error" + result)
+      }
+    });
+
+    PushNotifications.addListener('registration',
+      (token: Token) => {
+        console.log('Push registration success, token: ' + token.value);
+      }
+    );
+
+    PushNotifications.addListener('registrationError',
+      (error: any) => {
+        console.log('Error on registration: ' + JSON.stringify(error));
+      }
+    );
+
+    PushNotifications.addListener('pushNotificationReceived',
+      (notification: PushNotificationSchema) => {
+        console.log('Push received: ' + JSON.stringify(notification));
+      }
+    );
+    
+    PushNotifications.addListener('pushNotificationActionPerformed',
+      (notification: ActionPerformed) => {
+        console.log('Push action performed: ' + JSON.stringify(notification));
+      }
+    );
+  
   }
 
   abrir(negocio:any){
@@ -26,6 +69,21 @@ export class FolderPage implements OnInit {
       }
     }
     this.router.navigate(["/negocio"],params)
+  }
+
+  enviarNotificacion(){
+    LocalNotifications.schedule({
+      notifications: [{
+        id: 1,
+        title: 'SuperCompras Delivery',
+        body: 'Nuevo Pedido Creado',
+        sound: null,
+        attachments: null,
+        actionTypeId: "",
+        extra: null
+      }]
+      
+    });
   }
 
 }

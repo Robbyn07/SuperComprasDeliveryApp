@@ -6,6 +6,7 @@ import { PedidoService } from '../../services/pedido.service';
 import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { NegociosService } from '../../services/negocios.service';
 
+
 @Component({
   selector: 'app-empleado-inicio',
   templateUrl: './empleado-inicio.page.html',
@@ -19,7 +20,7 @@ export class EmpleadoInicioPage implements OnInit {
 
   ngOnInit() {
     this.pedidos = this.pedidoService.getPedidosEnviados();
-  }
+  }  
 
   abrir(p:Pedido){
     let params: NavigationExtras = {
