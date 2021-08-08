@@ -17,8 +17,13 @@
                     <h2>Precio: {{p.precioTotal}}</h2>
                 </ion-label>
             </ion-item>
-            <app-mapa latEmp={{p.latEmp}} lonEmp={{p.lonEmp}} latDes={{p.latDes}} lonDes={{p.lonDes}} ></app-mapa>
         </div>
+
+        <agm-map [latitude]="lati" [longitude]="longi" [zoom]="zoom" >
+            <agm-marker [latitude]="lati" [longitude]="longi" [iconUrl]="icons.center"></agm-marker>
+        </agm-map>
+
+          <p> Ubicación: {{ direccion }} </p>
 
         
 
@@ -33,8 +38,7 @@
         </ion-item>
     </div>
 
-    
-    <ion-button expand="block" (click)="borrarr()">Refrescar mapa</ion-button>
+
     <ion-button expand="block" (click)="chat()">Ir chat</ion-button>
 
 </ion-content>
