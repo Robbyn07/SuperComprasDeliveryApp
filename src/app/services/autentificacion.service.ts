@@ -2,8 +2,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { rejects } from 'assert';
-import { resolve } from 'dns';
 import { Observable } from 'rxjs';
 import { Usuario } from '../domain/usuario';
 
@@ -68,26 +66,49 @@ export class AutentificacionService {
 
   }
 
-  ver: Usuario = new Usuario();
 
   getUsuario(email: any) {
-    var promise = new Promise((resolve, rejects) => {
-      this.afs.collection("usuario", )
-
-    }     )
     console.log("llega getUser")
-    return this.afs.collection("usuario", ref => ref.where("email", "==", email))
+    return this.afs.collection("usuario", ref => ref.where("email", "==", email)).valueChanges();
 
   }
 
-  NO(user: Usuario){
-    if(user.rol == "cliente"){
-      return true;
-    }else{
-      return false;
+/*
+  async onLoginGoogle() {
+    try {
+    const res = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+        this.router.navigate(['/menu-p'])
+
+        this.afstore.doc(usuarios/${res.user.uid}).set({
+
+            nombre: res.user.displayName ,
+            correo: res.user.email,
+            clave: null,
+            activo: true,
+            tipo: true,
+            uid: res.user.uid
+        })
+        console.log(res);
+
+
+        this.user.setUser({
+            nombre: res.user.displayName ,
+            correo: res.user.email,
+            clave: null,
+            activo: true,
+            tipo: true,
+            uid: res.user.uid
+        })
+
+
+
+
+    } catch (error) {
+      console.log('Error->', error);
     }
-
   }
+  */
+
 
 
 }
