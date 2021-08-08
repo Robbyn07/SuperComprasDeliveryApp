@@ -13,7 +13,6 @@ import { environment } from 'src/environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
-
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
