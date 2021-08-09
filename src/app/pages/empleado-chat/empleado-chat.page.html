@@ -1,27 +1,28 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-back-button (click)="regresar()"></ion-back-button>
         </ion-buttons>
         <ion-title>Empleado Chat</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <div auto-hide="false" *ngFor="let c of chat | async; let i = index">
+        <ion-item-divider>
+            <p>{{c.id}}</p>
+        </ion-item-divider>
 
-    <ion-item auto-hide="false" *ngFor="let c of chat | async; let i = index">
-        <p>{{c.id}}</p>
-        <div *ngFor="let p of c.mensajes">
+        <ion-item-divider *ngFor="let p of c.mensajes">
             <ion-card>
                 <ion-card-header>{{p.enviado}} dice:</ion-card-header>
                 <ion-card-content>{{p.mensaje}}</ion-card-content>
             </ion-card>
-        </div>
+        </ion-item-divider>
+
         <ion-input type="text" name="Escribir mensaje" [(ngModel)]="mensaje" placeholder="Escribir mensaje" required></ion-input>
         <ion-button expand="block" (click)="nuevoMensaje(c)">Enviar Mensaje</ion-button>
-    </ion-item>
 
-    <ion-button expand="block" (click)="regresar()">Regresar</ion-button>
-
+    </div>
 
 </ion-content>

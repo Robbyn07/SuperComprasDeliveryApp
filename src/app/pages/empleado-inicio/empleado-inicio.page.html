@@ -14,7 +14,7 @@
 <ion-content>
 
     <ion-item-divider auto-hide="false" *ngFor="let p of pedidos | async; let i = index">
-        <ion-card (click)="abrir(p)">
+        <ion-item (click)="abrir(p)">
             <ion-card-header>
                 <ion-card-title>{{p.nombreCliente}}</ion-card-title>
 
@@ -29,7 +29,29 @@
                 <ion-card-subtitle>Precio:</ion-card-subtitle>
                 {{p.precioTotal}} $
             </ion-card-content>
-        </ion-card>
+        </ion-item>
     </ion-item-divider>
+
+
+
+    <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button (click)="clickInicio()">
+            <ion-icon name="home-outline"></ion-icon>
+            <ion-label>Pedidos</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button (click)="click('/cuenta-info')">
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-label>Cuenta</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button (click)="click('/ayuda')">
+            <ion-icon name="help-circle-outline"></ion-icon>
+            <ion-label>Ayuda</ion-label>
+          </ion-tab-button>
+      
+        </ion-tab-bar>
+      </ion-tabs>
 
 </ion-content>

@@ -4,6 +4,7 @@ import { NegociosService } from '../../services/negocios.service';
 import { Pedido } from '../../domain/pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { PedidoDetalle } from '../../domain/pedidoDetalle';
+import { AutentificacionService } from 'src/app/services/autentificacion.service'; 
 
 @Component({
   selector: 'app-negocio',
@@ -17,7 +18,10 @@ export class NegocioPage implements OnInit {
   pedidoDetalle:Array<PedidoDetalle> = new Array<PedidoDetalle>(); 
   zoom=16;
 
-  constructor(private route: ActivatedRoute, private router:Router, private negociosService:NegociosService, private pedidoService:PedidoService) { 
+  user2: any;
+  verifica: any;
+
+  constructor(private route: ActivatedRoute, private router:Router, private negociosService:NegociosService, private pedidoService:PedidoService, private auth: AutentificacionService) { 
 
     route.queryParams.subscribe(params =>{
       this.negocio = params.negocio
@@ -30,16 +34,30 @@ export class NegocioPage implements OnInit {
   ngOnInit() {
   }
 
-  pedir(){
+  async pedir(){
     this.pedido.id = this.pedidoService.generarId();
     this.pedido.idNegocio = this.negocio.id;
     this.pedido.nombreNegocio = this.negocio.nombre;
     this.pedido.idCliente = "nada we";
     this.pedido.nombreCliente = "el nombre, cuando exista";
-    this.pedido.lonEmp = -79.057738;
-    this.pedido.latEmp = -2.911221;
+    this.pedido.nombreEmpleado = "Pendiente";
+    this.pedido.idEmpleado = "3";
+    this.pedido.lonEmp = -79.052135;
+    this.pedido.latEmp = -2.884693;
     this.pedido.lonDes = this.negocio.longitud;
     this.pedido.latDes = this.negocio.latitud;
+
+    
+    this.verifica = await this.auth.verificacion();
+    this.user2 = this.auth.getUsuario(this.verifica);
+    this.user2.forEach((element: any[]) => {
+
+      this.pedido.nombreCliente = element[0].nombre + " " + element[0].apellido;
+      this.pedido.idCliente = element[0].id;
+
+    });
+
+
     let params: NavigationExtras = {
       queryParams:{
         negocio:this.negocio,

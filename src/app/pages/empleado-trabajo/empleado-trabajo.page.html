@@ -15,41 +15,39 @@
                 <h2>Estado: {{p.estado}}</h2>
                 <h2>Precio: {{p.precioTotal}}</h2>
             </ion-label>
-    
+
         </ion-item>
-        <app-mapa latEmp={{p.latEmp}} lonEmp={{p.lonEmp}} latDes={{p.latDes}} lonDes={{p.lonDes}} ></app-mapa>
+        <app-mapa latEmp={{p.latEmp}} lonEmp={{p.lonEmp}} latDes={{p.latDes}} lonDes={{p.lonDes}}></app-mapa>
 
         <ion-list auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
 
 
-            <ion-item>
+            <ion-item (click)="actualizarCheck(pd)">
                 <ion-label>
                     <h2>Producto: {{pd.producto}}</h2>
                     <h2>Precio: {{pd.precio}} $</h2>
                     <h2>Cantidad: {{pd.cantidad}}</h2>
+                    <h2>Estado: {{pd.estadoCompra}}</h2>
                 </ion-label>
-                <ion-item lines="none">
-                    <ion-label>Estado: {{pd.estadoCompra}}</ion-label>
-                    <ion-checkbox color="primary" checked slot="end"></ion-checkbox>
-                </ion-item>
+                <ion-checkbox color="primary" [(ngModel)]="pd.booleanCompra" lot="end"></ion-checkbox>
             </ion-item>
-    
-    
-    
+
+
+
             <ion-item color="success">
                 <ion-label>Total: {{pd.precioTotal}}$</ion-label>
             </ion-item>
         </ion-list>
-    
-    
+
+
         <ion-button expand="block" (click)="cambioEstado(p)">Cambiar Estado del Pedido</ion-button>
         <ion-button expand="block" (click)="chat()">Chat</ion-button>
 
 
     </div>
 
-    
 
-    
+
+
 
 </ion-content>

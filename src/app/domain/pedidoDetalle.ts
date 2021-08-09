@@ -7,4 +7,5 @@ export class PedidoDetalle{
     cantidad: number;
     precioTotal: number;
     estadoCompra: string;
+    booleanCompra: boolean;
 }

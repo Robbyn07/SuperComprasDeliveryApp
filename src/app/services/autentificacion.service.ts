@@ -172,6 +172,10 @@ export class AutentificacionService {
     }
   }
   */
+  getUsuarioId(id: string) {
+    return this.afs.collection("usuario", ref => ref.where("id", "==", id)).valueChanges();
+
+  }
 
 /*
   async onLoginGoogle() {

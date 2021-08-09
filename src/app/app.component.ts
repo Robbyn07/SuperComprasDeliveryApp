@@ -11,7 +11,7 @@ export class AppComponent {
     { title: 'Inicio', url: '/folder/Inbox', icon: 'home-outline' },
     { title: 'Cuenta', url: '/cuenta-info', icon: 'person-outline' },
     { title: 'Historial', url: '/pedido-historial', icon: 'time-outline' },
-    { title: 'Ayuda', url: '/folder/Inbox', icon: 'help-circle-outline' },
+    { title: 'Ayuda', url: '/ayuda', icon: 'help-circle-outline' },
   ];
 
   constructor() {

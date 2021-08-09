@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 import { AutentificacionService } from 'src/app/services/autentificacion.service'; 
 import { Usuario } from 'src/app/domain/usuario';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cuenta-info',
@@ -18,7 +18,16 @@ export class CuentaInfoPage implements OnInit {
   corr: any;
   pass: any;
 
-  constructor(private auth: AutentificacionService ) { }
+  url:string;
+
+  constructor(private auth: AutentificacionService, private route: ActivatedRoute, private router:Router) { 
+    route.queryParams.subscribe(params =>{
+      this.url = params.url;
+      if(this.router.getCurrentNavigation().extras.queryParams){
+        this.url = this.router.getCurrentNavigation().extras.queryParams.url;
+      };
+    })
+  }
 
   async ngOnInit() {
 
@@ -38,8 +47,10 @@ export class CuentaInfoPage implements OnInit {
     });
 
     
-    
-    
+  }
+
+  regresar(){
+    this.router.navigate([this.url])
   }
 
 

@@ -1,12 +1,83 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-back-button (click)="regresar()"></ion-back-button>
         </ion-buttons>
         <ion-title>Ayuda</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-list>
+        <ion-list-header>
+            <b>Informacion Basica</b>
+        </ion-list-header>
+
+        <ion-item-group>
+            <ion-item-divider color="primary">
+                <ion-label>¿Qué es SuperCompras Delivery?</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">
+                    SuperCompras es una plataforma movil para el servicio de compras y entrega de productos para el hogar. SuperCompras te conecta con una amplia variedad de supermercados para que puedas pedir todos los productos que necesites.
+                </ion-label>
+            </ion-item>
+        </ion-item-group>
+
+        <ion-item-group>
+            <ion-item-divider color="primary">
+                <ion-label>¿Cómo funciona SuperCompras Delivery?</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">
+                    SuperCompras te brinda los supermercados y las diversas opciones disponibles para realizar tu pedido, solo debes usarlas y disfrutar de tus compras en linea.
+                </ion-label>
+            </ion-item>
+        </ion-item-group>
+
+        <ion-item-group>
+            <ion-item-divider color="primary">
+                <ion-label>¿Donde y cuando esta disponible SuperCompras Delivery?</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">
+                    SuperCompras esta disponible en la ciudad de Cuenca. Los horarios de funcionamiento dependeran de que supermercados se encuentran abiertos.
+                </ion-label>
+            </ion-item>
+        </ion-item-group>
+
+        <ion-item-group>
+            <ion-item-divider color="primary">
+                <ion-label>¿Como puedo comunicarme con el repartidor?</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">
+                    Al momento de realizar y confirmar su pedido, tendra acceso a su detalle con una opcion de Chat, este servira para comunicarse con el repartidor.
+                </ion-label>
+            </ion-item>
+        </ion-item-group>
+
+        <ion-list-header>
+            <b>Cuentas y Pagos</b>
+        </ion-list-header>
+
+        <ion-item-group>
+            <ion-item-divider color="primary">
+                <ion-label>¿Como reviso el historial de pedidos?</ion-label>
+            </ion-item-divider>
+
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">
+                    El Historial de pedidos se muestra en el menu desplegable y posee la informacion general de cada pedido realizado, con opcion a acceder a su detalle correspondiente.
+                </ion-label>
+            </ion-item>
+        </ion-item-group>
+
+    </ion-list>
 
 </ion-content>
