@@ -47,7 +47,7 @@ export class EmpleadoPedidoPage implements OnInit {
     this.user2 = this.auth.getUsuario(this.verifica);
     this.user2.forEach((element: any[]) => {
       this.idEmp = element[0].id;
-      this.nombreEmp = element[0].nombre + " " + element[0].apellido;
+      this.nombreEmp = element[0].nombre;
 
     });
   }

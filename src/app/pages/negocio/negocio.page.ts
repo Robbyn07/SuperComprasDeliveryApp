@@ -52,7 +52,7 @@ export class NegocioPage implements OnInit {
     this.user2 = this.auth.getUsuario(this.verifica);
     this.user2.forEach((element: any[]) => {
 
-      this.pedido.nombreCliente = element[0].nombre + " " + element[0].apellido;
+      this.pedido.nombreCliente = element[0].nombre;
       this.pedido.idCliente = element[0].id;
 
     });

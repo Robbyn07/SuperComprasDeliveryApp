@@ -9,6 +9,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import * as firebase from 'firebase/app';
 import { Platform } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,14 @@ export class AutentificacionService {
   direccion: any;
   ID:any;
   ROL: any;
+  lati: any;
+  longi:any;
+  v:any;
 
   u: Usuario = new Usuario();
 
 
-  constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore, private platform: Platform, private googlePlus: GooglePlus) { 
+  constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore, private platform: Platform, private googlePlus: GooglePlus, private router: Router) { 
     afAuth.authState.subscribe(user => (this.estaLogeado = user));
   }
 
@@ -70,15 +74,17 @@ export class AutentificacionService {
   }
 
   // guarda usuario
+  
   save(user: Usuario){
-    const refContactos = this.afs.collection("usuario");
-
-    if(user.id == null){
-      user.id = this.afs.createId();
-      user.rol = "cliente";
-    }
-    refContactos.doc(user.id).set(Object.assign({}, user));
-
+    console.log("entra a GUARDAR")
+      const refContactos = this.afs.collection("usuario");
+      if(user.id == null){
+        user.id = this.afs.createId();
+        user.rol = "cliente";
+      }
+      refContactos.doc(user.id).set(Object.assign({}, user)); 
+      this.router.navigate(["/folder/Imbox"])
+      
   }
 
 
@@ -127,11 +133,18 @@ export class AutentificacionService {
       this.nombre = credential.additionalUserInfo.profile;
       this.correo = credential.additionalUserInfo.profile;
       this.direccion = "Av loja y sucre";
+      this.lati = "-2.872220";
+      this.longi = "-78.974952";
+
+
       console.log("datos de google user ", this.nombre);
       
       this.u.nombre = this.nombre.name;
       this.u.direccion = this.direccion;
       this.u.email = this.correo.email;
+      this.u.latitud = this.lati
+      this.u.longitud = this.longi;
+      
       console.log(this.u);
       return this.save(this.u);
 
