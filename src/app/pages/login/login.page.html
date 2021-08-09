@@ -1,40 +1,37 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Iniciar Sesion</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
-  <ion-item>
-    <ion-label> Correo: </ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label> Contraseña: </ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
+    <div>
+        <img src="/assets/icon/Super_Compras.png" alt="SuperCompras" width="350">
+    </div>
 
-  <ion-label> {{ alerta }} </ion-label>
+    <ion-item>
+        <ion-label> <b>Correo:</b> </ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label> <b>Contraseña:</b></ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
 
-  <ion-item-divider>
-    <ion-button size="default" (click)="logeo()" > Ingresar </ion-button>
-  </ion-item-divider>
+    <ion-item lines="none"></ion-item>
 
-  <ion-item-divider>
-    <p>no tienes cuenta, registrate   </p>
-  </ion-item-divider>
-  <ion-item>
-    <ion-button size="small" (click)="pagRegistro()" > Registrarse </ion-button>
-  </ion-item>
-  <ion-item-divider>
-    <p>o registrate con tu cuenta de Google</p>
-  </ion-item-divider>
+    <ion-label>
+        <p class="error"><b> {{ alerta }} </b></p>
+    </ion-label>
 
-  <ion-item-divider>
-    <ion-button size="default" color="dark" (click)="googleLogin()">
-      <ion-icon name="logo-google"></ion-icon> Google
-    </ion-button>
-  </ion-item-divider>
+    <div>
+        <ion-button color="light" size="default" (click)="logeo()"> Ingresar </ion-button>
+    </div>
+
+    <div>
+        <ion-button size="large" color="dark" (click)="googleLogin()">
+            <ion-icon name="logo-google"></ion-icon> Google
+        </ion-button>
+    </div>
+
+    <div>
+        <p>No tienes cuenta?, registrate ahora:</p>
+        <ion-button color="light" size="small" (click)="pagRegistro()"> Registrarse </ion-button>
+    </div>
 
 </ion-content>

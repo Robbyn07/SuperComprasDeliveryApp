@@ -18,13 +18,15 @@
         </agm-map>
 
         <ion-card-header>
-            <ion-card-subtitle>Direccion</ion-card-subtitle>
+            <ion-card-subtitle><b>Direccion</b></ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>{{negocio.ubicacion}}</ion-card-content>
 
     </ion-card>
 
-    <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
-
 </ion-content>
+
+<ion-footer>
+    <ion-button expand="block" (click)="pedir()">Pedir aqui</ion-button>
+</ion-footer>

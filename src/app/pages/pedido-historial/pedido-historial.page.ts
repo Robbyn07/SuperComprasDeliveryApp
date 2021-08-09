@@ -21,7 +21,6 @@ export class PedidoHistorialPage implements OnInit {
 
   url:string;
   id:string;
-
   
   constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, 
         private negociosService:NegociosService) { 
@@ -38,7 +37,6 @@ export class PedidoHistorialPage implements OnInit {
 
   ngOnInit() {
     console.log(this.id)
-
 
     this.pedidosFinalizado = this.pedidoService.getPedidosFinalizadosCliente(this.id);
     this.pedidosEnviado = this.pedidoService.getPedidosEnviadoCliente(this.id);

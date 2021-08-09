@@ -1,80 +1,88 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button (click)="regresar()"></ion-back-button>
-    </ion-buttons>
-    <ion-title>pedido-historial</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button (click)="regresar()"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Historial de Pedidos</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <h2>Pedidos Enviados</h2>
-  <ion-list auto-hide="false" *ngFor="let p of pedidosEnviado | async; let i = index">
-    <ion-item (click)="ver(p)">
-      <ion-card-header>
-        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          <ion-card-subtitle>Local:</ion-card-subtitle>
-          {{p.nombreNegocio}}
-      </ion-card-content>
-      <ion-card-content>
-          <ion-card-subtitle>Precio:</ion-card-subtitle>
-          {{p.precioTotal}} $
-      </ion-card-content>
-    </ion-item>
-  </ion-list>
+    <ion-item-divider>
+        <h3>Pedidos Enviados</h3>
+    </ion-item-divider>
+    <ion-list auto-hide="false" *ngFor="let p of pedidosEnviado | async; let i = index">
+        <ion-item (click)="ver(p)">
+            <ion-card-header>
+                <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-card-subtitle><b>Local:</b></ion-card-subtitle>
+                {{p.nombreNegocio}}
+            </ion-card-content>
+            <ion-card-content>
+                <ion-card-subtitle><b>Precio:</b></ion-card-subtitle>
+                {{p.precioTotal}} $
+            </ion-card-content>
+        </ion-item>
+    </ion-list>
 
-  <h2>Pedidos Aceptados</h2>
-  <ion-list auto-hide="false" *ngFor="let p of pedidosAceptado | async; let i = index">
-    <ion-item (click)="ver(p)">
-      <ion-card-header>
-        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          <ion-card-subtitle>Local:</ion-card-subtitle>
-          {{p.nombreNegocio}}
-      </ion-card-content>
-      <ion-card-content>
-          <ion-card-subtitle>Precio:</ion-card-subtitle>
-          {{p.precioTotal}} $
-      </ion-card-content>
-    </ion-item>
-  </ion-list>
+    <ion-item-divider>
+        <h3>Pedidos Aceptados</h3>
+    </ion-item-divider>
+    <ion-list auto-hide="false" *ngFor="let p of pedidosAceptado | async; let i = index">
+        <ion-item (click)="ver(p)">
+            <ion-card-header>
+                <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-card-subtitle>Local:</ion-card-subtitle>
+                {{p.nombreNegocio}}
+            </ion-card-content>
+            <ion-card-content>
+                <ion-card-subtitle>Precio:</ion-card-subtitle>
+                {{p.precioTotal}} $
+            </ion-card-content>
+        </ion-item>
+    </ion-list>
 
-  <h2>Pedidos Entregando</h2>
-  <ion-list auto-hide="false" *ngFor="let p of pedidosEntregando | async; let i = index">
-    <ion-item (click)="ver(p)">
-      <ion-card-header>
-        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          <ion-card-subtitle>Local:</ion-card-subtitle>
-          {{p.nombreNegocio}}
-      </ion-card-content>
-      <ion-card-content>
-          <ion-card-subtitle>Precio:</ion-card-subtitle>
-          {{p.precioTotal}} $
-      </ion-card-content>
-    </ion-item>
-  </ion-list>
+    <ion-item-divider>
+        <h3>Pedidos Entregando</h3>
+    </ion-item-divider>
+    <ion-list auto-hide="false" *ngFor="let p of pedidosEntregando | async; let i = index">
+        <ion-item (click)="ver(p)">
+            <ion-card-header>
+                <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-card-subtitle>Local:</ion-card-subtitle>
+                {{p.nombreNegocio}}
+            </ion-card-content>
+            <ion-card-content>
+                <ion-card-subtitle>Precio:</ion-card-subtitle>
+                {{p.precioTotal}} $
+            </ion-card-content>
+        </ion-item>
+    </ion-list>
 
-  <h2>Pedidos Finalizados</h2>
-  <ion-list auto-hide="false" *ngFor="let p of pedidosFinalizado | async; let i = index">
-    <ion-item>
-      <ion-card-header>
-        <ion-card-title>{{p.nombreCliente}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          <ion-card-subtitle>Local:</ion-card-subtitle>
-          {{p.nombreNegocio}}
-      </ion-card-content>
-      <ion-card-content>
-          <ion-card-subtitle>Precio:</ion-card-subtitle>
-          {{p.precioTotal}} $
-      </ion-card-content>
-    </ion-item>
-  </ion-list>
+    <ion-item-divider>
+        <h3>Pedidos Finalizados</h3>
+    </ion-item-divider>
+    <ion-list auto-hide="false" *ngFor="let p of pedidosFinalizado | async; let i = index">
+        <ion-item>
+            <ion-card-header>
+                <ion-card-title>{{p.nombreCliente}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-card-subtitle>Local:</ion-card-subtitle>
+                {{p.nombreNegocio}}
+            </ion-card-content>
+            <ion-card-content>
+                <ion-card-subtitle>Precio:</ion-card-subtitle>
+                {{p.precioTotal}} $
+            </ion-card-content>
+        </ion-item>
+    </ion-list>
 
 </ion-content>

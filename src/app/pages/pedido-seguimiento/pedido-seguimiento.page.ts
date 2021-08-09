@@ -26,19 +26,14 @@ export class PedidoSeguimientoPage implements OnInit {
 
   borrar:string;
 
-  
-
   pedido:any;
   pedidoDetalle:any;
   negocio:any;
 
   zoom=16;
 
-
   constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, 
         private locationService:LocationService, private negociosService:NegociosService, private alertController:AlertController) { 
-
-    
 
     route.queryParams.subscribe(params =>{
       this.id = params.id;
@@ -51,10 +46,6 @@ export class PedidoSeguimientoPage implements OnInit {
   }
 
   async ngOnInit() {
-
-
-
-
     //CUANDO EXISTA UN CLIENTE, SE DEBE OBTENER LA UBICACION DEL CLIENTE PARA LAS VARIABLES DE lat Y lng
     //console.log(this.id)
     //console.log(this.idNegocio)
@@ -65,13 +56,30 @@ export class PedidoSeguimientoPage implements OnInit {
 
   }
 
+  clickInicio(){
+    this.router.navigate(["/folder/Index"])
+  }
+
+  click(url:string){
+    let params: NavigationExtras = {
+      queryParams:{
+        url:"/folder/Index"
+      }
+    }
+    this.router.navigate([url],params)
+  }
+
+  clickHistorial(url:string){
+    let params: NavigationExtras = {
+      queryParams:{
+        url:"/folder/Index",
+        id:this.id,
+      }
+    }
+    this.router.navigate([url],params)
+  }
+
   
-
-
-
-
-  
-
   newAddress(event:any){
     /*if(event){
       this.centerLocation.latitude = event.lat;

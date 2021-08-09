@@ -21,19 +21,19 @@
             <img [src]="n.imagen" [alt]="n.nombre" />
 
             <ion-card-content>
-                <h2>Precio: {{pedido.precioTotal}}$</h2>
+                <h2>Precio: </h2> {{pedido.precioTotal}} $
 
                 <h2>Productos</h2>
             </ion-card-content>
 
             <ion-item auto-hide="false" *ngFor="let p of pedidoDetalle | async; let i = index">
                 <ion-label>
-                    <h2>{{p.producto}}</h2>
-                    <h2>Precio: {{p.precio}}</h2>
-                    <h2>Cantidad: {{p.cantidad}}</h2>
+                    <h3>{{p.producto}}</h3>
+                    <h2>Precio:</h2> {{p.precio}} $
+                    <h2>Cantidad:</h2> {{p.cantidad}}
                 </ion-label>
 
-                <ion-item color="success">
+                <ion-item id="totales">
                     <ion-label>Total: {{p.precioTotal}}$</ion-label>
                 </ion-item>
             </ion-item>

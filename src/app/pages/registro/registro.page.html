@@ -1,38 +1,37 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Registro de Usuario</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-  <ion-item>
-    <ion-label> Nombre: </ion-label>
-    <ion-input type="text" [(ngModel)]="user.nombre"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label> Dirección: </ion-label>
-    <ion-input type="text" [(ngModel)]="user.direccion"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label> Email: </ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label> Contraseña: </ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label> Longitud: </ion-label>
-    <ion-input type="password" [(ngModel)]="user.longitud"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label> Latitud: </ion-label>
-    <ion-input type="password" [(ngModel)]="user.latitud"></ion-input>
-  </ion-item>
 
-  <ion-item-divider>
-    <ion-button size="large" (click)="registro()" > Registrar </ion-button>
-    <ion-button size="large" (click)="regresar()" > Cancelar </ion-button>
-  </ion-item-divider>
+    <div>
+        <img src="/assets/icon/Super_Compras.png" alt="SuperCompras" width="350">
+    </div>
+
+    <ion-item>
+        <ion-label> Nombre: </ion-label>
+        <ion-input type="text" [(ngModel)]="user.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label> Dirección: </ion-label>
+        <ion-input type="text" [(ngModel)]="user.direccion"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label> Email: </ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label> Contraseña: </ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label> Longitud: </ion-label>
+        <ion-input type="password" [(ngModel)]="user.longitud"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label> Latitud: </ion-label>
+        <ion-input type="password" [(ngModel)]="user.latitud"></ion-input>
+    </ion-item>
+
+    <div>
+        <ion-button color="light" size="default" (click)="registro()"> Registrar </ion-button>
+        <ion-button color="light" size="default" (click)="regresar()"> Cancelar </ion-button>
+    </div>
 
 </ion-content>

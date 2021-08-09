@@ -1,8 +1,5 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
         <ion-buttons slot="end" (click)="salirE()">
             <ion-icon size="large" name="log-out-outline"></ion-icon>
         </ion-buttons>
@@ -32,26 +29,31 @@
         </ion-item>
     </ion-item-divider>
 
-
-
-    <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          <ion-tab-button (click)="clickInicio()">
-            <ion-icon name="home-outline"></ion-icon>
-            <ion-label>Pedidos</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button (click)="click('/cuenta-info')">
-            <ion-icon name="person-outline"></ion-icon>
-            <ion-label>Cuenta</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button (click)="click('/ayuda')">
-            <ion-icon name="help-circle-outline"></ion-icon>
-            <ion-label>Ayuda</ion-label>
-          </ion-tab-button>
-      
-        </ion-tab-bar>
-      </ion-tabs>
-
 </ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row>
+            <ion-col (click)="clickInicio()">
+                <ion-icon name="home-outline"></ion-icon>
+                <ion-label>
+                    <h2><b>Pedidos</b></h2>
+                </ion-label>
+            </ion-col>
+
+            <ion-col (click)="click('/cuenta-info')">
+                <ion-icon name="person-outline"></ion-icon>
+                <ion-label>
+                    <h2><b>Cuenta</b></h2>
+                </ion-label>
+            </ion-col>
+
+            <ion-col (click)="click('/ayuda')">
+                <ion-icon name="help-circle-outline"></ion-icon>
+                <ion-label>
+                    <h2><b>Ayuda</b></h2>
+                </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>
