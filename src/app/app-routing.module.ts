@@ -66,7 +66,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'cuenta-info',
+    loadChildren: () => import('./pages/cuenta-info/cuenta-info.module').then( m => m.CuentaInfoPageModule)
   }
+
 
 
 ];
