@@ -55,7 +55,20 @@ export class EmpleadoTrabajoPage implements OnInit {
   }
 
 
-  cambioEstado(){
+  cambioEstado(p:Pedido){
+    if(p.estado=="Aceptado"){
+      p.estado = "Entregando";
+      //esto cambiar por la lon y lat del cliente
+      p.latDes = -2.920172; 
+      p.lonDes = -79.030588;
+      this.pedidoService.save(p);
+    }else if(p.estado=="Entregando"){
+      p.estado = "Finalizado";
+      this.pedidoService.save(p);// y salir
+    }
+
+
+
     //cambiar el pedido de estado de (Aceptado a Entregando) y de (Entregando a Finalizado)
     //y cambiar los datos del destino del pedido por la posicion del cliente
   }

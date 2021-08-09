@@ -12,4 +12,5 @@ export class Pedido{
     latEmp:number;
     lonDes:number;
     latDes:number;
+    metodoPago:string;
 }
