@@ -9,9 +9,6 @@
 
 <ion-content>
     <div auto-hide="false" *ngFor="let c of chat | async; let i = index">
-        <ion-item-divider>
-            <p>{{c.id}}</p>
-        </ion-item-divider>
 
         <ion-item-divider *ngFor="let p of c.mensajes">
             <ion-card>
