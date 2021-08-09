@@ -6,6 +6,8 @@ import { PedidoService } from '../../services/pedido.service';
 import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { NegociosService } from '../../services/negocios.service';
 
+import { AutentificacionService } from 'src/app/services/autentificacion.service'; 
+
 
 @Component({
   selector: 'app-empleado-inicio',
@@ -16,7 +18,7 @@ export class EmpleadoInicioPage implements OnInit {
 
   pedidos:any;
 
-  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService) { }
+  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService, private auth: AutentificacionService ) { }
 
   ngOnInit() {
     this.pedidos = this.pedidoService.getPedidosEnviados();
@@ -31,6 +33,13 @@ export class EmpleadoInicioPage implements OnInit {
       }
     }
     this.router.navigate(["/empleado-pedido"],params)
+  }
+
+  salirE(){
+    console.log("Sale Empleado");
+    this.auth.salirCuenta();
+    this.router.navigate(["/login"])
+
   }
 
 }

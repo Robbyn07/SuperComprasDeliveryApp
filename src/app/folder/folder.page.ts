@@ -8,6 +8,8 @@ import {
   Token
 } from '@capacitor/push-notifications';
 
+import { AutentificacionService } from 'src/app/services/autentificacion.service'; 
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
@@ -18,7 +20,7 @@ export class FolderPage implements OnInit {
   negocios: any;
   public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute,private router:Router, private negociosService:NegociosService) { }
+  constructor(private activatedRoute: ActivatedRoute,private router:Router, private negociosService:NegociosService, private auth: AutentificacionService) { }
 
   async ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -68,7 +70,13 @@ export class FolderPage implements OnInit {
     }
     this.router.navigate(["/negocio"],params)
   }
+  
 
+  salirC(){
+    console.log("Sale Cliente")
+    this.auth.salirCuenta();
+    this.router.navigate(["/login"])
+  }
   
 
 }
