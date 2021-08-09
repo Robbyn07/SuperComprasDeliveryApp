@@ -60,9 +60,15 @@ export class LoginPage implements OnInit {
     this.router.navigate(["/registro"])
   }
 
-  googleLogin() {
-    this.auth.googleLogin();
-    this.router.navigate(["/folder/Inbox"])
+  async googleLogin() {
+    try {
+      this.auth.googleLogin();
+    } catch (error) {
+      console.log("EEROR EN  metodo googleLogin")
+      
+    }
+      
+    
   }
 
 }
