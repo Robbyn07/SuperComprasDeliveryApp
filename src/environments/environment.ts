@@ -11,7 +11,9 @@ export const environment = {
     storageBucket: "supercomprasdeliveryapp.appspot.com",
     messagingSenderId: "163468485265",
     appId: "1:163468485265:web:f16ac84c680c803f489530"
-  }
+  },
+  googleWebClientId:"aoQlF_dR9vSf6X6ZdogFBEwL"
+
 };
 
 /*

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
+    <ion-title>Iniciar Sesion</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
     <ion-input type="password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
 
-  <p> {{ alerta }}</p>
+  <ion-label> {{ alerta }} </ion-label>
 
   <ion-item-divider>
     <ion-button size="default" (click)="logeo()" > Ingresar </ion-button>
@@ -23,11 +23,18 @@
 
   <ion-item-divider>
     <p>no tienes cuenta, registrate   </p>
+  </ion-item-divider>
+  <ion-item>
     <ion-button size="small" (click)="pagRegistro()" > Registrarse </ion-button>
+  </ion-item>
+  <ion-item-divider>
+    <p>o registrate con tu cuenta de Google</p>
   </ion-item-divider>
 
   <ion-item-divider>
-    <p>o registrate con tu cuenta de Google</p>
+    <ion-button size="default" color="dark" (click)="googleLogin()">
+      <ion-icon name="logo-google"></ion-icon> Google
+    </ion-button>
   </ion-item-divider>
 
 </ion-content>

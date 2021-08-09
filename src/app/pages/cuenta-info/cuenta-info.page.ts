@@ -14,7 +14,6 @@ export class CuentaInfoPage implements OnInit {
   user2: any;
   verifica: any;
   nom: any;
-  ape: any;
   dir: any;
   corr: any;
   pass: any;
@@ -32,7 +31,6 @@ export class CuentaInfoPage implements OnInit {
 
       console.log(" VER ELEMENTO", element[0]);
       this.nom = element[0].nombre;
-      this.ape = element[0].apellido;
       this.dir = element[0].direccion;
       this.corr = element[0].email;
       this.pass = element[0].password;
