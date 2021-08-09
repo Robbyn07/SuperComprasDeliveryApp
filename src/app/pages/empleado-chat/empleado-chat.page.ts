@@ -54,7 +54,7 @@ export class EmpleadoChatPage implements OnInit {
   }
 
   regresar(){
-    this.pedido.estado = "aceptado";
+    this.pedido.estado = "Aceptado";
     this.pedidoService.save(this.pedido);
     
     let params: NavigationExtras = {
