@@ -8,9 +8,38 @@
         </ion-buttons>
         <ion-title>Inicio</ion-title>
     </ion-toolbar>
+
+      
 </ion-header>
 
+
+
 <ion-content [fullscreen]="true">
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="clickInicio()">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="clickHistorial('/pedido-historial')">
+        <ion-icon name="time-outline"></ion-icon>
+        <ion-label>Historial</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="click('/cuenta-info')">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Cuenta</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="click('/ayuda')">
+        <ion-icon name="help-circle-outline"></ion-icon>
+        <ion-label>Ayuda</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
 
     <ion-item auto-hide="false" *ngFor="let n of negocios | async; let i = index">
         <ion-card (click)="abrir(n)">
@@ -26,4 +55,8 @@
         </ion-card>
     </ion-item>
 
+
+    
+
 </ion-content>
+

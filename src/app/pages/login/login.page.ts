@@ -60,4 +60,9 @@ export class LoginPage implements OnInit {
     this.router.navigate(["/registro"])
   }
 
+  googleLogin() {
+    this.auth.googleLogin();
+    this.router.navigate(["/folder/Inbox"])
+  }
+
 }

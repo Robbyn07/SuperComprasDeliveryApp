@@ -22,16 +22,14 @@
         <ion-list auto-hide="false" *ngFor="let pd of pedidoDetalle | async; let i = index">
 
 
-            <ion-item>
+            <ion-item (click)="actualizarCheck(pd)">
                 <ion-label>
                     <h2>Producto: {{pd.producto}}</h2>
                     <h2>Precio: {{pd.precio}} $</h2>
                     <h2>Cantidad: {{pd.cantidad}}</h2>
+                    <h2>Estado: {{pd.estadoCompra}}</h2>
                 </ion-label>
-                <ion-item lines="none">
-                    <ion-label>Estado: {{pd.estadoCompra}}</ion-label>
-                    <ion-checkbox color="primary" [(ngModel)]="pd.booleanCompra" (ionChange)="actualizarCheck(pd)" lot="end"></ion-checkbox>
-                </ion-item>
+                <ion-checkbox color="primary" [(ngModel)]="pd.booleanCompra" lot="end"></ion-checkbox>
             </ion-item>
 
             <ion-item color="success">

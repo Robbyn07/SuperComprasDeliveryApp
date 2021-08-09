@@ -20,9 +20,21 @@ export class FolderPage implements OnInit {
   negocios: any;
   public folder: string;
 
+  user2: any;
+  verifica: any;
+  id: string;
+
   constructor(private activatedRoute: ActivatedRoute,private router:Router, private negociosService:NegociosService, private auth: AutentificacionService) { }
 
   async ngOnInit() {
+
+    this.verifica = await this.auth.verificacion();
+    this.user2 = this.auth.getUsuario(this.verifica);
+    this.user2.forEach((element: any[]) => {
+      this.id = element[0].id;
+    });
+
+
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
     this.negocios = this.negociosService.getNegocios();
 
@@ -76,6 +88,30 @@ export class FolderPage implements OnInit {
     console.log("Sale Cliente")
     this.auth.salirCuenta();
     this.router.navigate(["/login"])
+  }
+
+
+  clickInicio(){
+    this.router.navigate(["/folder/Index"])
+  }
+
+  click(url:string){
+    let params: NavigationExtras = {
+      queryParams:{
+        url:"/folder/Index"
+      }
+    }
+    this.router.navigate([url],params)
+  }
+
+  clickHistorial(url:string){
+    let params: NavigationExtras = {
+      queryParams:{
+        url:"/folder/Index",
+        id:this.id,
+      }
+    }
+    this.router.navigate([url],params)
   }
   
 

@@ -18,6 +18,9 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
 
 import {AngularFireAuthModule } from '@angular/fire/auth';
 
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,7 +34,7 @@ import {AngularFireAuthModule } from '@angular/fire/auth';
             }),
             AngularFireAuthModule
           ],
-  providers: [ LocalNotifications, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Geolocation, NativeGeocoder],
+  providers: [GooglePlus, LocalNotifications, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Geolocation, NativeGeocoder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

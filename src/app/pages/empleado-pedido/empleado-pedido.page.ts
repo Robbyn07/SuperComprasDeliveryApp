@@ -6,6 +6,7 @@ import { PedidoService } from '../../services/pedido.service';
 import { PedidoDetalleService } from '../../services/pedido-detalle.service';
 import { NegociosService } from '../../services/negocios.service';
 import { Negocio } from '../../domain/negocio';
+import { AutentificacionService } from '../../services/autentificacion.service';
 
 @Component({
   selector: 'app-empleado-pedido',
@@ -19,7 +20,13 @@ export class EmpleadoPedidoPage implements OnInit {
   idCliente:string;
   negocio:any;
   pedidoDetalle:any;
-  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService) { 
+
+  user2: any;
+  verifica: any;
+
+  nombreEmp:string;
+  idEmp:string;
+  constructor(private route: ActivatedRoute, private router:Router, private pedidoDetalleService:PedidoDetalleService, private pedidoService:PedidoService, private negociosService:NegociosService, private auth: AutentificacionService) { 
     route.queryParams.subscribe(params =>{
       this.pedido = params.pedido;
       this.idNegocio = params.idNegocio;
@@ -32,14 +39,27 @@ export class EmpleadoPedidoPage implements OnInit {
     })
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.negocio = this.negociosService.getNegocio(this.idNegocio);
     this.pedidoDetalle = this.pedidoDetalleService.getDetalle(this.pedido.id);
+
+    this.verifica = await this.auth.verificacion();
+    this.user2 = this.auth.getUsuario(this.verifica);
+    this.user2.forEach((element: any[]) => {
+      this.idEmp = element[0].id;
+      this.nombreEmp = element[0].nombre + " " + element[0].apellido;
+
+    });
   }
 
   confirmar(){
+    this.pedido.idEmpleado = this.idEmp;
+    this.pedido.nombreEmpleado = this.nombreEmp;
+
     this.pedido.estado = "Aceptado";
     this.pedidoService.save(this.pedido);
+
+    
     
     let params: NavigationExtras = {
       queryParams:{
