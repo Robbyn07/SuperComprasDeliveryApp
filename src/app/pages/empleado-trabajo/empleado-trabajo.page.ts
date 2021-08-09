@@ -54,6 +54,17 @@ export class EmpleadoTrabajoPage implements OnInit {
     this.router.navigate(["/empleado-chat"],params)
   }
 
+  actualizarCheck(pd: PedidoDetalle){
+    if (pd.booleanCompra){
+      pd.booleanCompra = true;
+      pd.estadoCompra = "Comprado";
+    } else{
+      pd.booleanCompra = false;
+      pd.estadoCompra = "No comprado";
+    }
+    
+    this.pedidoDetalleService.save(pd);
+  }
 
   cambioEstado(p:Pedido){
     if(p.estado=="Aceptado"){
@@ -66,8 +77,6 @@ export class EmpleadoTrabajoPage implements OnInit {
       p.estado = "Finalizado";
       this.pedidoService.save(p);// y salir
     }
-
-
 
     //cambiar el pedido de estado de (Aceptado a Entregando) y de (Entregando a Finalizado)
     //y cambiar los datos del destino del pedido por la posicion del cliente

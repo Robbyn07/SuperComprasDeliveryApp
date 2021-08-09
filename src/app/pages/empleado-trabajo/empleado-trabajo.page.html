@@ -30,7 +30,7 @@
                 </ion-label>
                 <ion-item lines="none">
                     <ion-label>Estado: {{pd.estadoCompra}}</ion-label>
-                    <ion-checkbox color="primary" checked slot="end"></ion-checkbox>
+                    <ion-checkbox color="primary" [(ngModel)]="pd.booleanCompra" (ionChange)="actualizarCheck(pd)" lot="end"></ion-checkbox>
                 </ion-item>
             </ion-item>
 
