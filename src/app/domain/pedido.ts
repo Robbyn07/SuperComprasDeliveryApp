@@ -13,4 +13,6 @@ export class Pedido{
     lonDes:number;
     latDes:number;
     metodoPago:string;
+    idEmpleado:string;
+    nombreEmpleado:string;
 }

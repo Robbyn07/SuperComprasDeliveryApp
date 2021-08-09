@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ayuda',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AyudaPage implements OnInit {
 
-  constructor() { }
+  url:string;
+  constructor(private route: ActivatedRoute, private router:Router) { 
+    route.queryParams.subscribe(params =>{
+      this.url = params.url;
+      if(this.router.getCurrentNavigation().extras.queryParams){
+        this.url = this.router.getCurrentNavigation().extras.queryParams.url;
+      };
+    })
+  }
 
   ngOnInit() {
+  }
+
+  regresar(){
+    this.router.navigate([this.url])
   }
 
 }

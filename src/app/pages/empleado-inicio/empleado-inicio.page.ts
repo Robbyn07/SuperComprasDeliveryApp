@@ -25,6 +25,7 @@ export class EmpleadoInicioPage implements OnInit {
   }  
 
   abrir(p:Pedido){
+    console.log("llega")
     let params: NavigationExtras = {
       queryParams:{
         pedido:p,
@@ -40,6 +41,19 @@ export class EmpleadoInicioPage implements OnInit {
     this.auth.salirCuenta();
     this.router.navigate(["/login"])
 
+  }
+
+  clickInicio(){
+    this.router.navigate(["/empleado-inicio"])
+  }
+
+  click(url:string){
+    let params: NavigationExtras = {
+      queryParams:{
+        url:"/empleado-inicio"
+      }
+    }
+    this.router.navigate([url],params)
   }
 
 }
